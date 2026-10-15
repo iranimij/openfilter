@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://iranimij.github.io/openfilter/cli/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Command line - OpenFilter</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Command line";
+        var mkdocs_page_input_path = "cli.md";
+        var mkdocs_page_url = "/openfilter/cli/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> OpenFilter
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../install/">Install</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../filters/">Filters</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../admin/">Admin</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../storefront/">Storefront</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../url-format/">Filter URLs</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../seo/">SEO rules</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Command line</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#openfilterdoctor">openfilter:doctor</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#openfilterslugsgenerate">openfilter:slugs:generate</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#openfilterconfigexport-import">openfilter:config:export / import</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../import-export/">Import and export</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/">Troubleshooting</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../coexistence/">Other search modules</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../upgrade-uninstall/">Upgrade and uninstall</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Developers</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../hyva-integration/">Hyvä integration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../facet-counts/">Facet counts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../index-fields/">Index fields</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">OpenFilter</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Command line</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/iranimij/openfilter/edit/main/docs/cli.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="command-line">Command line<a class="headerlink" href="#command-line" title="Permanent link">&para;</a></h1>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bin/magento openfilter:doctor</code></td>
+<td>checks the installation and every filter, with the fix for each problem</td>
+</tr>
+<tr>
+<td><code>bin/magento openfilter:slugs:generate</code></td>
+<td>creates URL names for options that have none</td>
+</tr>
+<tr>
+<td><code>bin/magento openfilter:config:export</code></td>
+<td>writes filter settings, labels and URL names as JSON</td>
+</tr>
+<tr>
+<td><code>bin/magento openfilter:config:import &lt;file&gt;</code></td>
+<td>applies such a file, all or nothing</td>
+</tr>
+</tbody>
+</table>
+<h2 id="openfilterdoctor">openfilter:doctor<a class="headerlink" href="#openfilterdoctor" title="Permanent link">&para;</a></h2>
+<pre><code class="language-bash">bin/magento openfilter:doctor                       # default store view, every filter
+bin/magento openfilter:doctor -s de -c 21           # store view &quot;de&quot;, also check category 21
+bin/magento openfilter:doctor -f color --format=json
+</code></pre>
+<p>It checks: OpenFilter enabled, no other layered navigation active, the search engine reachable with a product index, the count strategy in use, OpenFilter's cache enabled, every option with a URL name, and other modules that replace or wrap Magento's layered navigation classes (found in the DI configuration, reported by class name). Per filter it runs the checks of the admin's "Why is this filter not showing?" panel: shown on the storefront, used in layered navigation, field in the search index, and with <code>-c</code> whether the category has products with a value and more than one option.</p>
+<p>Each line is <code>OK</code>, <code>WARN</code> or <code>FAIL</code>. Warnings describe a choice or the catalog (a filter you hid, an attribute not used on search pages) and never fail. The command exits with <code>1</code> when a check fails, so it fits a deployment script.</p>
+<h2 id="openfilterslugsgenerate">openfilter:slugs:generate<a class="headerlink" href="#openfilterslugsgenerate" title="Permanent link">&para;</a></h2>
+<pre><code class="language-bash">bin/magento openfilter:slugs:generate --dry-run     # what would change
+bin/magento openfilter:slugs:generate -a color      # one attribute
+bin/magento openfilter:slugs:generate --overwrite   # every name again from the labels
+</code></pre>
+<p>Without <code>--overwrite</code>, existing URL names never change: published filter URLs keep working. Use it after importing options outside the admin (new options saved in the admin get a name on save). <code>--overwrite</code> regenerates every name from the current labels; old URLs then answer through the option-id fallback only if they used ids.</p>
+<h2 id="openfilterconfigexport-import">openfilter:config:export / import<a class="headerlink" href="#openfilterconfigexport-import" title="Permanent link">&para;</a></h2>
+<p>See <a href="../import-export/">Import and export</a>.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../seo/" class="btn btn-neutral float-left" title="SEO rules"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../import-export/" class="btn btn-neutral float-right" title="Import and export">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/iranimij/openfilter" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../seo/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../import-export/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

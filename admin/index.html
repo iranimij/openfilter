@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://iranimij.github.io/openfilter/admin/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Admin - OpenFilter</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Admin";
+        var mkdocs_page_input_path = "admin.md";
+        var mkdocs_page_url = "/openfilter/admin/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> OpenFilter
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../install/">Install</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../filters/">Filters</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Admin</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#first-run">First run</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#filters-grid">Filters grid</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#filter-form">Filter form</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#url-names">URL names</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#attribute-page">Attribute page</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#why-is-this-filter-not-showing">Why is this filter not showing?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#settings">Settings</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../storefront/">Storefront</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../url-format/">Filter URLs</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../seo/">SEO rules</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cli/">Command line</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../import-export/">Import and export</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/">Troubleshooting</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../coexistence/">Other search modules</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../upgrade-uninstall/">Upgrade and uninstall</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Developers</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../hyva-integration/">Hyvä integration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../facet-counts/">Facet counts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../index-fields/">Index fields</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">OpenFilter</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Admin</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/iranimij/openfilter/edit/main/docs/admin.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="admin">Admin<a class="headerlink" href="#admin" title="Permanent link">&para;</a></h1>
+<p>Everything lives under <strong>Catalog › OpenFilter</strong>: <strong>Filters</strong> (one list of attribute filters and built-in filters) and <strong>Settings</strong> (Stores › Configuration › Iranimij › OpenFilter). Access is controlled by the ACL resources <em>Catalog › OpenFilter › Filters</em> and <em>Stores › Settings › Configuration › Iranimij › OpenFilter</em>.</p>
+<h2 id="first-run">First run<a class="headerlink" href="#first-run" title="Permanent link">&para;</a></h2>
+<p>After installing, the admin shows a notice: how many filterable attributes OpenFilter found and which defaults it set (colours as swatches, sizes as text swatches, price as a slider, other lists as checkbox lists, Yes/No attributes as switches). Rating, In stock, On sale and New start switched off. <strong>Review defaults</strong> opens the Filters grid and dismisses the notice.</p>
+<h2 id="filters-grid">Filters grid<a class="headerlink" href="#filters-grid" title="Permanent link">&para;</a></h2>
+<p>One row per filter: label, code, type (attribute or built-in), how it looks, several values, options before "Show more", search box threshold, "Google may index", position, storefront (shown or hidden).</p>
+<ul>
+<li><strong>Inline edit</strong>: click a row, change the common fields, Save. Each row is saved on its own; a row with a value that does not fit (for example swatches on an attribute without swatches) reports its error and the other rows are still saved.</li>
+<li><strong>Mass actions</strong>: <em>Show on the storefront</em>, <em>Hide from the storefront</em>, <em>Reset to defaults</em> (labels per store view and URL names are kept). Hiding a filter never changes the attribute's own "Use in Layered Navigation" setting, so it stays in the grid.</li>
+<li>Row actions: <strong>Edit</strong> and <strong>Why is it not showing?</strong></li>
+</ul>
+<h2 id="filter-form">Filter form<a class="headerlink" href="#filter-form" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Settings</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Why is this filter not showing?</td>
+<td>the checks below, for any store view and category page</td>
+</tr>
+<tr>
+<td>How it looks</td>
+<td>display type: only the types that fit the attribute are offered (swatches need swatch data, sliders a number attribute, the on/off switch a Yes/No attribute or a list with two options)</td>
+</tr>
+<tr>
+<td>How it behaves</td>
+<td>show on the storefront, several values, options before "Show more" (0 = all), search box from N options (0 = never), open when the page loads (automatic / open / closed), option order, hide when only one option is left, position (empty = the attribute's position)</td>
+</tr>
+<tr>
+<td>SEO</td>
+<td>"Let Google index pages filtered by this" (single-value pages only), URL name of the filter, URL names of the options per store view</td>
+</tr>
+<tr>
+<td>Labels per store view</td>
+<td>a label for all store views and one per store view (empty = the attribute's label)</td>
+</tr>
+</tbody>
+</table>
+<p>Saving is all or nothing: settings, labels and URL names are written in one transaction.</p>
+<h3 id="url-names">URL names<a class="headerlink" href="#url-names" title="Permanent link">&para;</a></h3>
+<p>URL names are what shoppers and search engines see in filter URLs (<code>?color=blue,red</code>). They are created once from the option labels and <strong>never change because a label changed</strong> (see <a href="../url-format/">Filter URLs</a>).</p>
+<ul>
+<li>Option URL names are checked as one set per store view before anything is written: lowercase letters, digits and single dashes, at most 64 characters, no name used twice. Two options can swap names in one save.</li>
+<li>A store view field left empty uses the name for all store views; a store view row is only stored where the name differs.</li>
+<li><strong>Generate again from the label</strong> (per option) creates a fresh name from the option's label in every store view when you save. This changes published URLs; old URLs with option IDs keep working, old names do not.</li>
+</ul>
+<h2 id="attribute-page">Attribute page<a class="headerlink" href="#attribute-page" title="Permanent link">&para;</a></h2>
+<p>Stores › Attributes › Product › <em>attribute</em> › <strong>Storefront Properties</strong> has an <strong>OpenFilter</strong> fieldset for attributes that are filters: how it looks, several values, options before "Show more", search box threshold, URL name, "Let Google index". It is saved with the attribute (an invalid value stops the save). A link opens the full filter form for labels, option URL names and position.</p>
+<p>Saving any product attribute refreshes OpenFilter's cache, so an attribute that becomes filterable appears on the storefront without a cache flush.</p>
+<h2 id="why-is-this-filter-not-showing">Why is this filter not showing?<a class="headerlink" href="#why-is-this-filter-not-showing" title="Permanent link">&para;</a></h2>
+<p>Each line is a condition the filter needs, with what was found and how to fix it. The first problem is usually the answer.</p>
+<table>
+<thead>
+<tr>
+<th>Check</th>
+<th>Fails when</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OpenFilter is on for this store view</td>
+<td>"Enable OpenFilter" is No</td>
+</tr>
+<tr>
+<td>No other layered navigation is active</td>
+<td>ElasticSuite or Adobe Live Search provides the layered navigation</td>
+</tr>
+<tr>
+<td>The attribute is used in layered navigation</td>
+<td>the attribute is not a filter at all</td>
+</tr>
+<tr>
+<td>The filter is set to show on the storefront</td>
+<td>it is hidden in the grid or the form</td>
+</tr>
+<tr>
+<td>…on category pages / on search result pages</td>
+<td>"Use in Layered Navigation" / "Use in Search Results Layered Navigation" is No</td>
+</tr>
+<tr>
+<td>Every option has a URL name</td>
+<td>options were imported without saving the attribute</td>
+</tr>
+<tr>
+<td>Out-of-stock products are shown in the catalog</td>
+<td>(In stock filter) "Display Out of Stock Products" is No</td>
+</tr>
+<tr>
+<td>The search index has the field</td>
+<td>the product index of the store view lacks the field: reindex <code>catalogsearch_fulltext</code></td>
+</tr>
+<tr>
+<td><em>Category</em> shows layered navigation</td>
+<td>the category is not an anchor or shows a static block only</td>
+</tr>
+<tr>
+<td>Products in <em>category</em> match this filter</td>
+<td>no visible product of the category has a value (counted by the search engine)</td>
+</tr>
+<tr>
+<td>More than one option has products here</td>
+<td>one option only and "Hide when only one option is left" is on</td>
+</tr>
+</tbody>
+</table>
+<p>The same checks power <code>bin/magento openfilter:doctor</code> (1.0).</p>
+<h2 id="settings">Settings<a class="headerlink" href="#settings" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Path</th>
+<th>Default</th>
+<th>Scope</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Enable OpenFilter</td>
+<td><code>openfilter/general/enabled</code></td>
+<td>Yes</td>
+<td>store view</td>
+</tr>
+<tr>
+<td>Update results without reloading the page</td>
+<td><code>openfilter/general/ajax</code></td>
+<td>Yes</td>
+<td>store view</td>
+</tr>
+<tr>
+<td>Debug mode</td>
+<td><code>openfilter/general/debug</code></td>
+<td>No</td>
+<td>global</td>
+</tr>
+<tr>
+<td>Filters open by default</td>
+<td><code>openfilter/display/expanded_groups</code></td>
+<td>3</td>
+<td>store view</td>
+</tr>
+<tr>
+<td>Price slider step</td>
+<td><code>openfilter/display/price_step</code></td>
+<td>1</td>
+<td>store view</td>
+</tr>
+<tr>
+<td>Ask search engines not to follow filter links from this many active values</td>
+<td><code>openfilter/seo/nofollow_threshold</code></td>
+<td>2</td>
+<td>store view</td>
+</tr>
+<tr>
+<td>Most filter values active at once</td>
+<td><code>openfilter/seo/max_active_values</code></td>
+<td>5</td>
+<td>store view</td>
+</tr>
+<tr>
+<td>How filter counts are computed</td>
+<td><code>openfilter/search/count_strategy</code></td>
+<td>Automatic</td>
+<td>global</td>
+</tr>
+</tbody>
+</table>
+<p>Numbers are validated in the browser and on the server. Changing a setting, a filter, a label or a URL name marks the full page cache as invalid: refresh it in System › Cache Management, as with other catalog settings.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../filters/" class="btn btn-neutral float-left" title="Filters"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../storefront/" class="btn btn-neutral float-right" title="Storefront">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/iranimij/openfilter" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../filters/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../storefront/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://iranimij.github.io/openfilter/import-export/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Import and export - OpenFilter</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Import and export";
+        var mkdocs_page_input_path = "import-export.md";
+        var mkdocs_page_url = "/openfilter/import-export/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> OpenFilter
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../install/">Install</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../filters/">Filters</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../admin/">Admin</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../storefront/">Storefront</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../url-format/">Filter URLs</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../seo/">SEO rules</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cli/">Command line</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Import and export</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#format-schema-1">Format (schema 1)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#all-or-nothing">All or nothing</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/">Troubleshooting</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../coexistence/">Other search modules</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../upgrade-uninstall/">Upgrade and uninstall</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Developers</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../hyva-integration/">Hyvä integration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../facet-counts/">Facet counts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../index-fields/">Index fields</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">OpenFilter</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Import and export</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/iranimij/openfilter/edit/main/docs/import-export.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="import-and-export">Import and export<a class="headerlink" href="#import-and-export" title="Permanent link">&para;</a></h1>
+<p>Move filter settings, labels and URL names between installations (staging to production, one shop to the next) as JSON.</p>
+<pre><code class="language-bash">bin/magento openfilter:config:export -o openfilter.json
+bin/magento openfilter:config:import openfilter.json --dry-run   # lists every change, writes nothing
+bin/magento openfilter:config:import openfilter.json
+</code></pre>
+<h2 id="format-schema-1">Format (schema 1)<a class="headerlink" href="#format-schema-1" title="Permanent link">&para;</a></h2>
+<pre><code class="language-json">{
+    &quot;schema&quot;: 1,
+    &quot;filters&quot;: {
+        &quot;color&quot;: {
+            &quot;settings&quot;: {&quot;display_mode&quot;: &quot;swatch&quot;, &quot;multiselect&quot;: true, &quot;logic&quot;: &quot;or&quot;, &quot;visible_options&quot;: 6,
+                &quot;search_threshold&quot;: 12, &quot;expanded&quot;: null, &quot;sort_by&quot;: &quot;position&quot;, &quot;hide_single_option&quot;: true,
+                &quot;seo_indexable&quot;: true, &quot;position_override&quot;: null, &quot;active&quot;: true},
+            &quot;labels&quot;: {&quot;de&quot;: &quot;Farbe&quot;},
+            &quot;url_name&quot;: {&quot;admin&quot;: &quot;color&quot;},
+            &quot;options&quot;: {&quot;Red&quot;: {&quot;admin&quot;: &quot;red&quot;, &quot;de&quot;: &quot;rot&quot;}}
+        },
+        &quot;rating&quot;: {&quot;settings&quot;: {&quot;active&quot;: true}}
+    }
+}
+</code></pre>
+<ul>
+<li>Filters are keyed by attribute code or built-in code (<code>price</code>, <code>rating</code>, <code>stock</code>, <code>sale</code>, <code>new</code>, <code>category</code>); an attribute named like a built-in is <code>attribute:&lt;code&gt;</code>.</li>
+<li>Store views are keyed by store code; <code>admin</code> means all store views.</li>
+<li>Options are keyed by their admin label. When an attribute has several options with the same label, they are numbered in option order: <code>"Wool #1"</code>, <code>"Wool #2"</code>.</li>
+<li>Every section and setting is optional: a file may contain only what it changes.</li>
+</ul>
+<h2 id="all-or-nothing">All or nothing<a class="headerlink" href="#all-or-nothing" title="Permanent link">&para;</a></h2>
+<p>The import first checks the whole file: schema, known filters, store views and options, value types, URL name format. Then it writes every filter inside one database transaction through the same rules as the admin (display types that fit the attribute, URL names unique per attribute and store view). If any value is refused, nothing is written and the command lists the reason and exits with <code>1</code>.</p>
+<p><code>--dry-run</code> runs the same checks and writes inside a transaction it always rolls back, so URL name collisions are found exactly as in a real import. OpenFilter's cache is cleaned afterwards; Magento may show "full page cache invalidated" as after any admin save.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../cli/" class="btn btn-neutral float-left" title="Command line"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../troubleshooting/" class="btn btn-neutral float-right" title="Troubleshooting">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/iranimij/openfilter" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../cli/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../troubleshooting/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

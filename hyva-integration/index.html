@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://iranimij.github.io/openfilter/hyva-integration/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Hyvä integration - OpenFilter</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Hyv\u00e4 integration";
+        var mkdocs_page_input_path = "hyva-integration.md";
+        var mkdocs_page_url = "/openfilter/hyva-integration/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> OpenFilter
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../install/">Install</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../filters/">Filters</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../admin/">Admin</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../storefront/">Storefront</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../url-format/">Filter URLs</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../seo/">SEO rules</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cli/">Command line</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../import-export/">Import and export</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/">Troubleshooting</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../coexistence/">Other search modules</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../upgrade-uninstall/">Upgrade and uninstall</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Developers</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Hyvä integration</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#blocks-and-templates">Blocks and templates</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#markup-differences-14-15">Markup differences 1.4 → 1.5</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#product-list-toolbar-pager">Product list, toolbar, pager</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#alpine">Alpine</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#product-card-block-cache">Product card block cache</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mobile-behaviour-stock">Mobile behaviour (stock)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#csp">CSP</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#as-built-m3">As built (M3)</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../facet-counts/">Facet counts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../index-fields/">Index fields</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">OpenFilter</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Developers</li>
+      <li class="breadcrumb-item active">Hyvä integration</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/iranimij/openfilter/edit/main/docs/hyva-integration.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="hyva-integration">Hyvä integration<a class="headerlink" href="#hyva-integration" title="Permanent link">&para;</a></h1>
+<p>What OpenFilter's Hyvä package hooks into, verified on 2026-10-13 against the OSL Hyvä default theme <strong>1.4.2</strong> (the fixture store) and <strong>1.5.2</strong> (source of the public <code>hyva-themes/magento2-default-theme</code> tag), both with <code>magento2-theme-module</code> 1.5.2. The Playwright spec <code>hyva-layered-nav.spec.ts</code> in <a href="https://github.com/iranimij/openfilter-dev-env">openfilter-dev-env</a> pins the markup below, so a Hyvä change shows up as a failing test first.</p>
+<h2 id="blocks-and-templates">Blocks and templates<a class="headerlink" href="#blocks-and-templates" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Page</th>
+<th>Block name</th>
+<th>Class</th>
+<th>Template (Hyvä)</th>
+<th>Container</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Category (anchor, "layered")</td>
+<td><code>catalog.leftnav</code></td>
+<td><code>Magento\LayeredNavigation\Block\Navigation\Category</code></td>
+<td><code>Magento_LayeredNavigation::layer/view.phtml</code></td>
+<td><code>sidebar.main</code>, <code>before="-"</code></td>
+</tr>
+<tr>
+<td>Search results</td>
+<td><code>catalogsearch.leftnav</code></td>
+<td><code>Magento\LayeredNavigation\Block\Navigation\Search</code></td>
+<td>same</td>
+<td><code>sidebar.main</code> (every page layout moves it there)</td>
+</tr>
+<tr>
+<td>Active filters</td>
+<td><code>catalog.navigation.state</code> / <code>catalogsearch.navigation.state</code> (alias <code>state</code>)</td>
+<td><code>…\Navigation\State</code></td>
+<td><code>layer/state.phtml</code></td>
+<td>child of the leftnav block</td>
+</tr>
+<tr>
+<td>Filter options</td>
+<td><code>catalog.navigation.renderer</code> / <code>catalogsearch.navigation.renderer</code> (alias <code>renderer</code>)</td>
+<td><code>…\Navigation\FilterRenderer</code></td>
+<td><code>layer/filter.phtml</code>; swatch attributes go through <code>Magento_Swatches::product/layered/renderer.phtml</code></td>
+<td>child of the leftnav block</td>
+</tr>
+</tbody>
+</table>
+<p>The layout files <code>Magento_LayeredNavigation/layout/catalog_category_view_type_layered.xml</code> and <code>catalogsearch_result_index.xml</code> declare the same blocks in 1.4.2 and 1.5.2 (only the copyright header differs). <code>catalog_category_view_type_layered_without_children.xml</code> is empty.</p>
+<p><strong>Consequence for OpenFilter:</strong> the Hyvä package sets its own templates on these blocks by name (layout <code>hyva_catalog_category_view.xml</code> and <code>hyva_catalogsearch_result_index.xml</code>) and never edits Hyvä's files. Themes can override <code>Iranimij_OpenFilterHyva::layer/*.phtml</code> as usual.</p>
+<h2 id="markup-differences-14-15">Markup differences 1.4 → 1.5<a class="headerlink" href="#markup-differences-14-15" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Hyvä 1.4.2</th>
+<th>Hyvä 1.5.2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Filter block</td>
+<td><code>div[role=region][aria-label="Product filters"]</code> with <code>x-data="initLayeredNavigation()"</code> and inline <code>@resize</code>/<code>@click</code> expressions</td>
+<td>same region; <code>x-data="initLayeredNavigation"</code> registered with <code>Alpine.data</code> and <code>$hyvaCsp-&gt;registerInlineScript()</code>; events bound through <code>x-bind="eventListeners"</code> (CSP-build compatible)</td>
+</tr>
+<tr>
+<td>Filter group</td>
+<td><code>div.filter-option</code> with <code>x-data="{open:false}"</code> and <code>x-defer="intersect"</code>; options inside <strong><code>&lt;template x-if="open"&gt;</code></strong></td>
+<td>native <strong><code>&lt;details class="filter-option"&gt;</code></strong> + <code>&lt;summary&gt;</code></td>
+</tr>
+<tr>
+<td>Option links in the DOM before a group is opened</td>
+<td><strong>no</strong>: crawlers and no-JS users see no links until a group is opened</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>Option markup</td>
+<td><code>ol.items &gt; li &gt; a[href]</code> with count, <code>aria-label</code> "Red filter, 12 available products"</td>
+<td>same (<code>filter.phtml</code> unchanged)</td>
+</tr>
+<tr>
+<td>Swatch options</td>
+<td><code>a.swatch-option-link-layered[rel=nofollow]</code> with inline <code>style="background-color:…"</code>; colour is the only visible signal</td>
+<td>rendering moved into the <code>SwatchRenderer</code> view model; still inline styles</td>
+</tr>
+<tr>
+<td>Active filters</td>
+<td><code>div.filter-current</code> with remove links and "Clear All"</td>
+<td>same content, early <code>return</code> when empty</td>
+</tr>
+</tbody>
+</table>
+<p>What this means for OpenFilter's templates (M3):
+- real <code>&lt;a href&gt;</code> options are always in the DOM (1.4 hides them);
+- no inline styles: swatch colours come from a class and a custom property set in a stylesheet, or an <code>&lt;img&gt;</code>;
+- a visible label next to every colour swatch;
+- one Alpine component registered with <code>Alpine.data</code>, so it also runs with Hyvä's Alpine CSP build.</p>
+<h2 id="product-list-toolbar-pager">Product list, toolbar, pager<a class="headerlink" href="#product-list-toolbar-pager" title="Permanent link">&para;</a></h2>
+<ul>
+<li>The product list template (<code>Magento_Catalog::product/list.phtml</code>) renders <code>section#product-list[tabindex=-1]</code> containing the top toolbar, the grid (<code>.products.wrapper</code>) and the bottom toolbar (pager and limiter). It is identical in 1.4.2 and 1.5.2.</li>
+<li><strong>Empty result:</strong> with no products the template prints only <code>.message.info.empty</code> ("We can't find products matching the selection") and <strong>no <code>#product-list</code></strong>. OpenFilter's <code>#of-results</code> region must therefore wrap the product list block from layout, not live inside the list template.</li>
+<li><strong>Sorter, limiter and view mode</strong> are not links: <code>initToolbar…()</code> builds the URL and sets <code>location.href</code> on <code>change</code>/<code>click</code> (<code>toolbar.phtml</code>). The AJAX layer intercepts these in the capture phase on <code>#of-results</code>: it reads the new value from the control, builds the URL from the current URL and stops the event before Hyvä's handler runs. The pager uses plain links.</li>
+<li>Region wrappers planned for M3: <code>#of-filters</code> (the leftnav block), <code>#of-state</code> (the state block, moved out of the filter block so chips sit above the results) and <code>#of-results</code> (a container around the product list block). Each region is a layout container (<code>htmlTag="div" htmlId="of-…"</code>).</li>
+</ul>
+<h2 id="alpine">Alpine<a class="headerlink" href="#alpine" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Hyvä ships Alpine <strong>3.14.3</strong> (<code>Hyva_Theme::js/alpine3.min.js</code>). It also ships <code>alpine3-csp.min.js</code> for strict CSP setups. <code>Alpine.initTree(el)</code> exists in 3.x and is what the AJAX layer calls on swapped regions after <code>replaceChildren</code>, so components inside product cards (add to cart, wishlist, swatches) start again.</li>
+<li>OpenFilter's component is written for both builds: <code>x-data="openFilter"</code> registered through <code>Alpine.data</code>, no inline expressions, and one inline script followed by <code>$hyvaCsp-&gt;registerInlineScript()</code>.</li>
+</ul>
+<h2 id="product-card-block-cache">Product card block cache<a class="headerlink" href="#product-card-block-cache" title="Permanent link">&para;</a></h2>
+<p>Hyvä caches each product card for an hour. The key (<code>Hyva\Theme\ViewModel\ProductListItem::getItemCacheKeyInfo</code>) is: product id, view mode, template type, template, store, currency, the hide-details flags, the category id (only when categories are in product URLs), the customer group, the image display area, the image attributes and the tax rates. It contains <strong>no filter state</strong>. A filtered URL reuses cached cards, which is correct because a card does not change with the filters. OpenLabel's labels are part of the card HTML, so they survive every AJAX swap without integration code.</p>
+<h2 id="mobile-behaviour-stock">Mobile behaviour (stock)<a class="headerlink" href="#mobile-behaviour-stock" title="Permanent link">&para;</a></h2>
+<p>Below the <code>md</code> breakpoint the whole filter block collapses behind the "Shop By" toggle (<code>blockOpen</code>) above the product list. There is no off-canvas drawer and no "Show N products" button, and every option click is a full page load. OpenFilter's drawer (M3) replaces this.</p>
+<h2 id="csp">CSP<a class="headerlink" href="#csp" title="Permanent link">&para;</a></h2>
+<p>The fixture runs the storefront CSP in enforce mode. Hyvä 1.5 registers its inline scripts through <code>HyvaCsp</code>. Hyvä 1.4.2's layered navigation script has no registration call but still runs on the fixture (no violations in the smoke spec). OpenFilter registers every inline script it prints.</p>
+<h2 id="as-built-m3">As built (M3)<a class="headerlink" href="#as-built-m3" title="Permanent link">&para;</a></h2>
+<p>OpenFilter's Hyvä package applies everything above through its own layout handles (<code>openfilter_hyva_layer</code>, <code>openfilter_hyva_category</code>, <code>openfilter_hyva_search</code>), added by an observer on <code>layout_load_before</code> only on layered category and search pages of a Hyvä theme while OpenFilter is enabled. Switched off, the page keeps Hyvä's stock templates (the "off" side of the Lighthouse gate). Verified on 1.4.2 and 1.5.2 (the local store runs 1.5.2 as a second store view, CI as the default theme):</p>
+<ul>
+<li><code>catalog.leftnav</code> / <code>catalogsearch.leftnav</code> get <code>layer/view.phtml</code>: a <code>&lt;dialog id="of-drawer" open&gt;</code> around <code>#of-filters</code>, open in place on desktop and without JavaScript, modal on phones.</li>
+<li><code>catalog(search).navigation.state</code> gets <code>layer/state.phtml</code> and moves into <code>content</code> above <code>#of-results</code> (a container around <code>category.products</code> / <code>search.result</code>).</li>
+<li>Hyvä's toolbar keeps its markup; the component replaces the toolbar component's <code>changeUrl</code> (via <code>Alpine.$data</code>) on first use, so sorter, limiter and view mode swap like links.</li>
+<li>After a swap: <code>Alpine.mutateDom</code> → <code>destroyTree</code> → <code>replaceChildren</code> → inline scripts not yet run on the page → <code>Alpine.initTree</code>, then <code>hyva.initFormKey()</code> (Hyvä fills form keys only on page load).</li>
+<li>Hyvä 1.5.2 renders stock swatches as <code>a.swatch-option</code> (1.4.2: <code>a.swatch-option-link-layered</code>) and its toolbar amount without <code>.toolbar-number</code> spans; OpenFilter's own templates replace both on layered pages.</li>
+</ul>
+<p>Details for shoppers and theme developers: <a href="../storefront/">Storefront</a>.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../upgrade-uninstall/" class="btn btn-neutral float-left" title="Upgrade and uninstall"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../facet-counts/" class="btn btn-neutral float-right" title="Facet counts">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/iranimij/openfilter" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../upgrade-uninstall/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../facet-counts/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

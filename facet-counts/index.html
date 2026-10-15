@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://iranimij.github.io/openfilter/facet-counts/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Facet counts - OpenFilter</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Facet counts";
+        var mkdocs_page_input_path = "facet-counts.md";
+        var mkdocs_page_url = "/openfilter/facet-counts/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> OpenFilter
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../install/">Install</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../filters/">Filters</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../admin/">Admin</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../storefront/">Storefront</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../url-format/">Filter URLs</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../seo/">SEO rules</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cli/">Command line</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../import-export/">Import and export</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/">Troubleshooting</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../coexistence/">Other search modules</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../upgrade-uninstall/">Upgrade and uninstall</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Developers</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../hyva-integration/">Hyvä integration</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Facet counts</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#strategies">Strategies</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#where-it-hooks-in">Where it hooks in</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#evidence-m0-spike">Evidence (M0 spike)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#sliders-and-the-request-budget-m1">Sliders and the request budget (M1)</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../index-fields/">Index fields</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">OpenFilter</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Developers</li>
+      <li class="breadcrumb-item active">Facet counts</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/iranimij/openfilter/edit/main/docs/facet-counts.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="facet-counts">Facet counts<a class="headerlink" href="#facet-counts" title="Permanent link">&para;</a></h1>
+<p>Multi-select filters need <strong>disjunctive counts</strong>: with "Red" selected, the colour filter must still show how many products are blue, green or black, while every other filter counts only red products. Magento computes every aggregation under every active filter (conjunctive counts), so a multi-select colour filter would show 0 next to every other colour. OpenFilter fixes this behind one interface, <code>Iranimij\OpenFilter\Api\FacetCountStrategyInterface</code>, with two strategies.</p>
+<h2 id="strategies">Strategies<a class="headerlink" href="#strategies" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Strategy</th>
+<th>Code</th>
+<th>Search requests</th>
+<th>How</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SingleQuery</strong> (preferred)</td>
+<td><code>single_query</code></td>
+<td><strong>same as core</strong></td>
+<td>Active facet filters move from the query to <code>post_filter</code> (they still narrow the products), and each aggregation is wrapped in a <code>filter</code> aggregation that holds every active facet filter except the ones on its own attribute. One round trip.</td>
+</tr>
+<tr>
+<td><strong>PerAttribute</strong> (fallback)</td>
+<td><code>per_attribute</code></td>
+<td>core + 1 per attribute with an active filter</td>
+<td>The main request stays as Magento builds it. For each attribute with an active filter, one extra request (no hits, only that attribute's aggregation) runs without that attribute's own filter.</td>
+</tr>
+</tbody>
+</table>
+<p>Setting: <em>Stores › Configuration › Iranimij › OpenFilter › Search engine › How filter counts are computed</em> (<code>openfilter/search/count_strategy</code>): <strong>Automatic</strong> (default), or a fixed strategy. Automatic uses SingleQuery on OpenSearch, Elasticsearch 8 and Elasticsearch 7, and PerAttribute for any other engine. Debug mode writes the choice to the log once per process.</p>
+<p>Which filters are "facet filters": term filters in the <code>must</code> part of the layered navigation requests (<code>catalog_view_container</code>, <code>quick_search_container</code>) whose attribute also has a term aggregation. The category drill-down (<code>category_ids</code>), <code>visibility</code>, price ranges and search text stay as Magento builds them. Other search requests (GraphQL, widgets) are not touched.</p>
+<h2 id="where-it-hooks-in">Where it hooks in<a class="headerlink" href="#where-it-hooks-in" title="Permanent link">&para;</a></h2>
+<p>Verified on Magento 2.4.7-p10, 2.4.8-p5 and 2.4.9 (source of <code>magento/module-elasticsearch</code> 101.0.7-p5, 101.0.8 and 101.0.9, <code>module-open-search</code> 100.4.1–100.4.3, <code>module-elasticsearch-8</code> 101.0.x):</p>
+<ol>
+<li><code>Magento\OpenSearch\SearchAdapter\Mapper</code> and <code>Magento\Elasticsearch8\SearchAdapter\Mapper</code> both delegate to <strong><code>Magento\Elasticsearch\ElasticAdapter\SearchAdapter\Mapper::buildQuery()</code></strong>, identical on all three versions. An after-plugin (<code>Plugin\Search\MapperPlugin</code>) collects the facet filters from the request, builds their clauses with Magento's own filter builder, and lets the strategy rewrite the query.</li>
+<li>Both adapters then call <strong><code>Magento\Elasticsearch\SearchAdapter\Aggregation\Builder::setQuery()</code></strong> and <strong><code>::build($request, $rawResponse)</code></strong>, also identical on all three versions. <code>Plugin\Search\AggregationBuilderPlugin</code> hands <code>build()</code> the response with disjunctive counts (SingleQuery unwraps its filter aggregations; PerAttribute runs its count requests there), and hands <code>setQuery()</code> the <strong>original</strong> query, because core's price-interval data provider re-runs that query and must see exactly what core would have sent.</li>
+</ol>
+<p>Term filters with several values become a <code>terms</code> query in core already (<code>Filter\Builder\Term</code>), so <code>addFieldToFilter('color', [49, 50])</code> is an OR within the attribute without further changes.</p>
+<h2 id="evidence-m0-spike">Evidence (M0 spike)<a class="headerlink" href="#evidence-m0-spike" title="Permanent link">&para;</a></h2>
+<p><code>Test/Integration/Search/DisjunctiveCountsTest</code> builds its own catalog (three filterable select attributes, 36 products in an anchor category, 4 outside it), then for each strategy and four selections (one value; two values of one attribute; two attributes; three attributes with multiple values) compares the counts of <strong>every</strong> attribute with brute force: one engine request per option, with OpenFilter switched off, counting products matching every active filter except the attribute's own plus that option. It also measures the requests each strategy adds over core on the engine itself (<code>_nodes/stats</code> <code>query_total</code>).</p>
+<table>
+<thead>
+<tr>
+<th>Environment</th>
+<th>SingleQuery counts = brute force</th>
+<th>PerAttribute counts = brute force</th>
+<th>Requests added over core</th>
+<th>Run</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2.4.9, PHP 8.3, OpenSearch 2.5 (local fixture)</td>
+<td>4/4 selections, all attributes</td>
+<td>4/4</td>
+<td>SingleQuery <strong>0</strong>; PerAttribute = active attributes (1, 1, 2, 3)</td>
+<td>local, 2026-10-13</td>
+</tr>
+<tr>
+<td>2.4.9, PHP 8.3, OpenSearch 2.5 (local fixture), <strong>M1 catalog</strong>: simple + configurable products, 3 customer groups (Wholesale tier prices, price range), 2 store views (German view hides one product), category and search pages</td>
+<td>4/4 scenarios, all 3 attributes; also equal to the catalog's own PHP model</td>
+<td>4/4</td>
+<td>—</td>
+<td>local, 2026-10-13 (<code>M1CountsTest</code>)</td>
+</tr>
+<tr>
+<td>2.4.9 / 8.3, 8.4, OpenSearch 2.12</td>
+<td>pending</td>
+<td>pending</td>
+<td>pending</td>
+<td>CI full matrix (after hours)</td>
+</tr>
+<tr>
+<td>2.4.8-p5 / 8.2, 8.3, 8.4, OpenSearch 2.12</td>
+<td>pending</td>
+<td>pending</td>
+<td>pending</td>
+<td>CI full matrix</td>
+</tr>
+<tr>
+<td>2.4.7-p10 / 8.3, OpenSearch 2.12</td>
+<td>pending</td>
+<td>pending</td>
+<td>pending</td>
+<td>CI full matrix</td>
+</tr>
+<tr>
+<td>2.4.7-p10 / 8.2, Elasticsearch 8.17</td>
+<td>pending</td>
+<td>pending</td>
+<td>pending</td>
+<td>CI full matrix</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Decision (preliminary, confirmed when the matrix is green):</strong> SingleQuery on every supported version and engine; PerAttribute stays as the automatic fallback for unknown engines and as a manual setting. If a matrix leg fails for SingleQuery only, that engine/version is mapped to PerAttribute in <code>etc/di.xml</code> (<code>autoByEngine</code>) and recorded here.</p>
+<p>Test note (M1): core's fulltext collection takes <code>Api\Search\SearchCriteriaBuilder</code> from <code>ObjectManager::get()</code>, one instance per process whose filters are never cleared, and the search indexer caches its attribute list per process. A storefront request builds one layer collection, so shops are not affected, but tests that build many collections or create attributes after an earlier reindex must reset those shared instances (<code>Test/Integration/Catalog/SearchIndexReset</code>, and a fresh criteria builder per collection). The M0 brute-force test runs with that reset too.</p>
+<h2 id="sliders-and-the-request-budget-m1">Sliders and the request budget (M1)<a class="headerlink" href="#sliders-and-the-request-budget-m1" title="Permanent link">&para;</a></h2>
+<p>Magento's price filter (and every decimal attribute filter) is a dynamic bucket: the main request already carries an <code>extended_stats</code> aggregation for it, but core's interval algorithm sends one or two more requests to build price ranges. OpenFilter's sliders need only min, max and count, so on layered requests <code>Plugin\Search\DynamicBucketPlugin</code> answers dynamic buckets from the main request's stats (bucket value <code>stats</code>), and range filters on those fields are facet filters like any option filter: the price slider's bounds ignore the price range itself, but respect every other filter.</p>
+<p>Measured on the engine (<code>DisjunctiveCountsTest::testSearchRequestsPerPage</code>, <code>SlidersTest</code>): <strong>SingleQuery = 1 search request per category page</strong> (products, disjunctive counts, price and decimal bounds), PerAttribute = 1 + active attributes; core needs more for its price intervals alone. Bounds are converted to the display currency and tax display of the store view (<code>Model\Search\PriceBoundsConverter</code>, default product tax class rate).</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../hyva-integration/" class="btn btn-neutral float-left" title="Hyvä integration"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../index-fields/" class="btn btn-neutral float-right" title="Index fields">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/iranimij/openfilter" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../hyva-integration/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../index-fields/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

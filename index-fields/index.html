@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://iranimij.github.io/openfilter/index-fields/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Index fields - OpenFilter</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Index fields";
+        var mkdocs_page_input_path = "index-fields.md";
+        var mkdocs_page_url = "/openfilter/index-fields/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> OpenFilter
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../install/">Install</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../filters/">Filters</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../admin/">Admin</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../storefront/">Storefront</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../url-format/">Filter URLs</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../seo/">SEO rules</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cli/">Command line</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../import-export/">Import and export</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/">Troubleshooting</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../coexistence/">Other search modules</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../upgrade-uninstall/">Upgrade and uninstall</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Developers</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../hyva-integration/">Hyvä integration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../facet-counts/">Facet counts</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Index fields</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#extension-points">Extension points</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#what-reindexes-a-products-search-document">What reindexes a product's search document</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#built-in-filters-m1">Built-in filters (M1)</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">OpenFilter</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Developers</li>
+      <li class="breadcrumb-item active">Index fields</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/iranimij/openfilter/edit/main/docs/index-fields.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="index-fields">Index fields<a class="headerlink" href="#index-fields" title="Permanent link">&para;</a></h1>
+<p>OpenFilter's built-in filters (rating, in stock, on sale, new) are filterable and countable in the search engine, so they need fields in the product search documents. M0 verified the core extension points on Magento 2.4.7, 2.4.8 and 2.4.9 (<code>Test/Integration/Index/IndexHooksTest</code>, run on every matrix leg).</p>
+<h2 id="extension-points">Extension points<a class="headerlink" href="#extension-points" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Need</th>
+<th>Core hook</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Add values to each product document</td>
+<td>virtual type <strong><code>additionalFieldsProviderForElasticsearch</code></strong> (<code>Magento\AdvancedSearch\Model\Adapter\DataMapper\AdditionalFieldsProvider</code>), argument <code>fieldsProviders</code></td>
+<td>The argument of <code>Magento\Elasticsearch\Model\Adapter\BatchDataMapper\ProductDataMapper</code>, shared by the OpenSearch and Elasticsearch 8 engines. Core registers <code>categories</code> and <code>prices</code> here. A provider implements <code>AdditionalFieldsProviderInterface::getFields(array $productIds, $storeId)</code> and returns fields per product id, batched.</td>
+</tr>
+<tr>
+<td>Declare the field types in the index mapping</td>
+<td>virtual type <strong><code>elasticsearch5FieldProvider</code></strong> (<code>Magento\Elasticsearch\Model\Adapter\FieldMapper\Product\CompositeFieldProvider</code>), argument <code>providers</code> (core: <code>static</code>, <code>dynamic</code>)</td>
+<td>Used by the OpenSearch and Elasticsearch 8 mappers. OpenFilter adds one provider for <code>of_rating</code> (integer), <code>of_in_stock</code> (integer), <code>of_on_sale_&lt;group&gt;_&lt;website&gt;</code> (integer), <code>of_news_from</code> / <code>of_news_to</code> (date).</td>
+</tr>
+</tbody>
+</table>
+<h2 id="what-reindexes-a-products-search-document">What reindexes a product's search document<a class="headerlink" href="#what-reindexes-a-products-search-document" title="Permanent link">&para;</a></h2>
+<p>The <code>catalogsearch_fulltext</code> mview subscribes to the product entity tables (<code>catalog_product_entity</code>, <code>_int</code>, <code>_decimal</code>, <code>_datetime</code>, <code>_varchar</code>, <code>_text</code>), category and website assignments, links, and <strong><code>catalogrule_product_price</code></strong>. Consequences:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Reindexed by core?</th>
+<th>M1 action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>of_on_sale_*</code></td>
+<td>Price, special price and dates (entity tables) and catalog price rules: <strong>yes</strong>. A special price whose date window opens or closes changes nothing in these tables.</td>
+<td>Plugin after the price indexer's row/full actions: reindex the same products in the search index (Magento refreshes the price index for date windows daily).</td>
+</tr>
+<tr>
+<td><code>of_news_from</code> / <code>of_news_to</code></td>
+<td>Yes (datetime table). Compared to "now" in the store timezone at query time, so no daily reindex is needed.</td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>of_rating</code></td>
+<td><strong>No</strong>: <code>review_entity_summary</code> is not subscribed.</td>
+<td>Plugin after review aggregation: reindex the product's search document.</td>
+</tr>
+<tr>
+<td><code>of_in_stock</code></td>
+<td>Not through the mview (<code>cataloginventory_stock_item</code> is not subscribed). With MSI, <code>Magento_InventoryCatalogSearch</code> reindexes on salability changes (<code>UpdateFulltextIndexOnProductSalabilityChange</code>). Legacy stock: product save.</td>
+<td>Legacy stock: plugin after the stock indexer's row action.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="built-in-filters-m1">Built-in filters (M1)<a class="headerlink" href="#built-in-filters-m1" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Filter</th>
+<th>Index field</th>
+<th>Source</th>
+<th>Applied and counted</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rating "N stars and up"</td>
+<td><code>of_rating</code> (0–100, store view)</td>
+<td><code>review_entity_summary</code></td>
+<td><code>of_rating ≥ N × 20</code>; one range aggregation for 4, 3, 2 and 1 stars</td>
+</tr>
+<tr>
+<td>In stock</td>
+<td><code>of_in_stock</code> (0/1)</td>
+<td>MSI stock of the website (<code>inventory_stock_&lt;id&gt;</code>), legacy <code>cataloginventory_stock_status</code> without MSI</td>
+<td>term; only when "Display out of stock products" is on (otherwise every listed product is in stock and the filter is hidden)</td>
+</tr>
+<tr>
+<td>On sale</td>
+<td><code>of_on_sale_&lt;group&gt;_&lt;website&gt;</code> (1)</td>
+<td>price index: final price below the regular price</td>
+<td>term on the current customer group's field</td>
+</tr>
+<tr>
+<td>New</td>
+<td><code>of_news_from</code>, <code>of_news_to</code> (dates, open ends filled)</td>
+<td>"Set Product as New" dates</td>
+<td>window compared to "now" in the store's timezone at query time</td>
+</tr>
+</tbody>
+</table>
+<p>The mapper adds each switched-on built-in as a clause (when selected) and a count aggregation, and registers it as a facet filter, so SingleQuery and PerAttribute exclude a built-in's own filter from its count like any option filter. Everything stays inside the one search request.</p>
+<p>Reindex triggers (<code>Plugin\Index</code>): review aggregation → product; partial price indexer runs (special price windows refreshed by cron) and legacy stock indexer runs → same products in <code>catalogsearch_fulltext</code>.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../facet-counts/" class="btn btn-neutral float-left" title="Facet counts"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/iranimij/openfilter" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../facet-counts/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

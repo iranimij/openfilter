@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://iranimij.github.io/openfilter/url-format/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Filter URLs - OpenFilter</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Filter URLs";
+        var mkdocs_page_input_path = "url-format.md";
+        var mkdocs_page_url = "/openfilter/url-format/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> OpenFilter
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../install/">Install</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../filters/">Filters</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../admin/">Admin</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../storefront/">Storefront</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Filter URLs</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#url-names">URL names</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#canonical-urls-301">Canonical URLs (301)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#reading-and-writing-urls-in-code">Reading and writing URLs in code</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../seo/">SEO rules</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cli/">Command line</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../import-export/">Import and export</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/">Troubleshooting</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../coexistence/">Other search modules</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../upgrade-uninstall/">Upgrade and uninstall</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Developers</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../hyva-integration/">Hyvä integration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../facet-counts/">Facet counts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../index-fields/">Index fields</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">OpenFilter</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Filter URLs</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/iranimij/openfilter/edit/main/docs/url-format.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="filter-urls">Filter URLs<a class="headerlink" href="#filter-urls" title="Permanent link">&para;</a></h1>
+<p>OpenFilter keeps Magento's routing and URL rewrites: filters are query parameters on the normal category or search URL, with readable, store-scoped names.</p>
+<pre><code class="language-text">/women/tops-women.html?color=blue,red&amp;size=m&amp;price=20-80&amp;rating=4&amp;stock=1
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Filter</th>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Attribute (list, swatch)</td>
+<td>the attribute's URL name (default: its code)</td>
+<td>option URL names, comma-separated (<code>%2C</code> works too)</td>
+</tr>
+<tr>
+<td>Price, decimal attributes</td>
+<td><code>price</code>, the attribute's URL name</td>
+<td><code>min-max</code> with <code>.</code> as decimal separator; open ends <code>20-</code> and <code>-80</code>; price in the display currency</td>
+</tr>
+<tr>
+<td>Rating</td>
+<td><code>rating</code></td>
+<td><code>4</code> = 4 stars and up (1–5)</td>
+</tr>
+<tr>
+<td>In stock, on sale, new</td>
+<td><code>stock</code>, <code>sale</code>, <code>new</code></td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td>Category</td>
+<td>Magento's own (<code>cat</code> on search pages, the category URL on category pages)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="url-names">URL names<a class="headerlink" href="#url-names" title="Permanent link">&para;</a></h2>
+<p>Option URL names are generated once from the option labels: lower case, German transliteration first (Grün → <code>gruen</code>, Weiß → <code>weiss</code>), any other script to ASCII, everything else becomes <code>-</code>. Collisions within one attribute and store view get <code>-2</code>, <code>-3</code> in option order. Store views get their own name only where it differs (German <code>rot</code> next to <code>red</code>).</p>
+<p>Names never change because a label changed, so published URLs stay valid. New options get a name when the attribute is saved. Parameter names avoid Magento's own (<code>p</code>, <code>q</code>, <code>cat</code>, <code>product_list_*</code>, <code>___store</code>) and the built-in filters (<code>price</code>, <code>rating</code>, <code>stock</code>, <code>sale</code>, <code>new</code>): Luma's sample attributes <code>new</code> and <code>sale</code> become <code>new-2</code> and <code>sale-2</code>.</p>
+<p>Old links keep working: a numeric option id is accepted in place of its name.</p>
+<h2 id="canonical-urls-301">Canonical URLs (301)<a class="headerlink" href="#canonical-urls-301" title="Permanent link">&para;</a></h2>
+<p>Every filter URL has one canonical form: filters in position order, values in option order, URL names, lower case, no duplicates or unknown values. Category and search pages answer other forms with a <strong>301</strong> to the canonical URL; sort order, limit and view mode stay, the page number resets only when values were dropped. Other parameters (tracking, for example) may sit anywhere. POST requests are never redirected.</p>
+<p>Links OpenFilter renders are canonical already, so shoppers and crawlers never hit the redirect; it catches hand-written, old and external links and keeps one cache entry per filtered page.</p>
+<h2 id="reading-and-writing-urls-in-code">Reading and writing URLs in code<a class="headerlink" href="#reading-and-writing-urls-in-code" title="Permanent link">&para;</a></h2>
+<p><code>Iranimij\OpenFilter\Api\UrlCodecInterface</code> turns parameters into an <code>Api\FilterStateInterface</code> (<code>decode</code>) and back (<code>encode</code>, <code>urlFor</code>). Unknown parameters are ignored, values are checked against the attribute's options, numbers are clamped (price ≥ 0, ≤ 10⁹; rating 1–5).</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../storefront/" class="btn btn-neutral float-left" title="Storefront"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../seo/" class="btn btn-neutral float-right" title="SEO rules">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/iranimij/openfilter" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../storefront/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../seo/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
