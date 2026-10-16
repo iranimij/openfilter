@@ -323,3 +323,7 @@
 "URL key","URL key"
 "Below the store's address, for example all-products or shop/all.html. A page that already has this address (a category, a CMS page) keeps it.","Below the store's address, for example all-products or shop/all.html. A page that already has this address (a category, a CMS page) keeps it."
 "Page title and heading","Page title and heading"
+"Query parameters (?color=black)","Query parameters (?color=black)"
+"Paths (/color-black.html)","Paths (/color-black.html)"
+"Filter URLs on category pages","Filter URLs on category pages"
+"Paths read like folders (women/tops/color-black,blue.html); query parameters are Magento's way (?color=black,blue). Old links of the other kind redirect (301). Search pages always use query parameters.","Paths read like folders (women/tops/color-black,blue.html); query parameters are Magento's way (?color=black,blue). Old links of the other kind redirect (301). Search pages always use query parameters."

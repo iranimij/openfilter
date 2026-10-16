@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace Iranimij\OpenFilter\Test\Unit\Model\Sitemap;
 
+use Iranimij\OpenFilter\Model\Url\PathUrl;
 use Iranimij\OpenFilter\Model\Config;
 use Iranimij\OpenFilter\Model\Config\CategoryRule;
 use Iranimij\OpenFilter\Model\Config\Defaults;
@@ -134,6 +135,11 @@ class FilterPagesTest extends TestCase
         $categoryConfig->method('getPriority')->willReturn('0.5');
         $categoryConfig->method('getChangeFrequency')->willReturn('daily');
 
-        return new FilterPages($config, $filters, $slugs, $categories, $tree, $counts, $factory, $categoryConfig, new CategoryRule());
+        $pathUrl = $this->createStub(PathUrl::class);
+        $pathUrl->method('oneValue')->willReturnCallback(
+            static fn (string $url, string $param, string $value): string => $url . '?' . rawurlencode($param) . '=' . rawurlencode($value)
+        );
+
+        return new FilterPages($config, $filters, $slugs, $categories, $tree, $counts, $factory, $categoryConfig, new CategoryRule(), $pathUrl);
     }
 }

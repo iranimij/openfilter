@@ -14,6 +14,7 @@ use Iranimij\OpenFilter\Model\Config\CategoryRule;
 use Iranimij\OpenFilter\Model\Config\FilterConfigProvider;
 use Iranimij\OpenFilter\Model\Layer\CategoryTree;
 use Iranimij\OpenFilter\Model\Url\SlugProvider;
+use Iranimij\OpenFilter\Model\Url\PathUrl;
 use Magento\Sitemap\Model\ItemProvider\ConfigReaderInterface;
 use Magento\Sitemap\Model\ItemProvider\ItemProviderInterface;
 use Magento\Sitemap\Model\ResourceModel\Catalog\CategoryFactory as SitemapCategoryFactory;
@@ -37,6 +38,7 @@ class FilterPages implements ItemProviderInterface
      * @param SitemapItemInterfaceFactory $itemFactory
      * @param ConfigReaderInterface $categoryConfig the sitemap settings of categories
      * @param CategoryRule $categoryRule "Where it shows"
+     * @param PathUrl $pathUrl page URLs in the store's filter URL format (1.2)
      */
     public function __construct(
         private readonly Config $config,
@@ -47,7 +49,8 @@ class FilterPages implements ItemProviderInterface
         private readonly OptionCounts $counts,
         private readonly SitemapItemInterfaceFactory $itemFactory,
         private readonly ConfigReaderInterface $categoryConfig,
-        private readonly CategoryRule $categoryRule
+        private readonly CategoryRule $categoryRule,
+        private readonly PathUrl $pathUrl
     ) {
     }
 
@@ -118,7 +121,7 @@ class FilterPages implements ItemProviderInterface
                         continue;
                     }
                     $pages[] = [
-                        'url' => $category->getUrl() . '?' . rawurlencode($param) . '=' . rawurlencode($slug),
+                        'url' => $this->pathUrl->oneValue((string) $category->getUrl(), (string) $param, $slug, $storeId),
                         'count' => $count,
                         'updatedAt' => $category->getUpdatedAt(),
                     ];

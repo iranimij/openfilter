@@ -14,6 +14,7 @@ use Iranimij\OpenFilter\Model\Config;
 use Iranimij\OpenFilter\Model\Config\FilterConfig;
 use Iranimij\OpenFilter\Model\Config\FilterConfigProvider;
 use Iranimij\OpenFilter\Model\Url\FilterStateProvider;
+use Iranimij\OpenFilter\Model\Url\PathUrl;
 use Magento\Framework\App\Request\Http as HttpRequest;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\UrlInterface;
@@ -36,6 +37,7 @@ class LayerContext
      * @param StoreManagerInterface $storeManager
      * @param RequestInterface $request
      * @param UrlInterface $url
+     * @param PathUrl $pathUrl path filter URLs of category pages (1.2, opt-in)
      */
     public function __construct(
         private readonly Config $config,
@@ -44,7 +46,8 @@ class LayerContext
         private readonly UrlCodecInterface $codec,
         private readonly StoreManagerInterface $storeManager,
         private readonly RequestInterface $request,
-        private readonly UrlInterface $url
+        private readonly UrlInterface $url,
+        private readonly PathUrl $pathUrl
     ) {
     }
 
@@ -211,7 +214,21 @@ class LayerContext
         }
         // _current keeps route parameters (catalog/category/view/id/12 without a URL rewrite); the query goes.
         $base = $this->url->getUrl('*/*/*', ['_use_rewrite' => true, '_current' => true]);
+        $base = strtok($base, '?') ?: $base;
+        if ($this->isCategoryPage() && $this->pathUrl->isActive($storeId)) {
+            return $this->pathUrl->build($state, $base, $keep, $storeId);
+        }
 
-        return $this->codec->urlFor($state, strtok($base, '?') ?: $base, $keep, $storeId);
+        return $this->codec->urlFor($state, $base, $keep, $storeId);
+    }
+
+    /**
+     * A category page (path filter URLs apply there, not on search pages or the All Products page).
+     *
+     * @return bool
+     */
+    public function isCategoryPage(): bool
+    {
+        return $this->request instanceof HttpRequest && $this->request->getFullActionName() === 'catalog_category_view';
     }
 }

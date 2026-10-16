@@ -29,6 +29,7 @@
                 <title>All products</title>
             </all_products>
             <seo>
+                <url_format>query</url_format>
                 <nofollow_threshold>2</nofollow_threshold>
                 <max_active_values>5</max_active_values>
                 <meta_title></meta_title>

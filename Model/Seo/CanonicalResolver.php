@@ -10,6 +10,7 @@ namespace Iranimij\OpenFilter\Model\Seo;
 
 use Iranimij\OpenFilter\Api\FilterStateInterface;
 use Iranimij\OpenFilter\Api\UrlCodecInterface;
+use Iranimij\OpenFilter\Model\Url\PathUrl;
 
 /**
  * Canonical URL of a filtered category page: an indexable page points to itself (canonical filter parameters and the
@@ -19,9 +20,11 @@ class CanonicalResolver
 {
     /**
      * @param UrlCodecInterface $codec
+     * @param PathUrl $pathUrl path filter URLs (1.2)
      */
     public function __construct(
-        private readonly UrlCodecInterface $codec
+        private readonly UrlCodecInterface $codec,
+        private readonly PathUrl $pathUrl
     ) {
     }
 
@@ -44,6 +47,10 @@ class CanonicalResolver
             return $categoryUrl;
         }
 
-        return $this->codec->urlFor($state, $categoryUrl, $page > 1 ? ['p' => (string) $page] : [], $storeId);
+        $keep = $page > 1 ? ['p' => (string) $page] : [];
+
+        return $this->pathUrl->isActive($storeId)
+            ? $this->pathUrl->build($state, $categoryUrl, $keep, $storeId)
+            : $this->codec->urlFor($state, $categoryUrl, $keep, $storeId);
     }
 }

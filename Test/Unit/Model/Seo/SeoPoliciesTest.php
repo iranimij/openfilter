@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace Iranimij\OpenFilter\Test\Unit\Model\Seo;
 
+use Iranimij\OpenFilter\Model\Url\PathUrl;
 use Iranimij\OpenFilter\Model\Config\DependencyRule;
 use Iranimij\OpenFilter\Model\Config;
 use Iranimij\OpenFilter\Model\Config\Defaults;
@@ -63,7 +64,7 @@ class SeoPoliciesTest extends TestCase
 
     public function testCanonicalOfAnIndexablePageIsItselfWithThePageNumberOnly(): void
     {
-        $canonical = new CanonicalResolver($this->codec());
+        $canonical = new CanonicalResolver($this->codec(), $this->createStub(PathUrl::class));
 
         self::assertSame(
             self::BASE . '?color=red',
@@ -77,7 +78,7 @@ class SeoPoliciesTest extends TestCase
 
     public function testCanonicalOfAnyOtherFilteredPageIsTheCategory(): void
     {
-        $canonical = new CanonicalResolver($this->codec());
+        $canonical = new CanonicalResolver($this->codec(), $this->createStub(PathUrl::class));
 
         self::assertSame(
             self::BASE,

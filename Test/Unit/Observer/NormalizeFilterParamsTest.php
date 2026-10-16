@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace Iranimij\OpenFilter\Test\Unit\Observer;
 
+use Iranimij\OpenFilter\Model\Url\PathUrl;
 use Iranimij\OpenFilter\Model\Config;
 use Iranimij\OpenFilter\Model\Layer\LayerContext;
 use Iranimij\OpenFilter\Model\Seo\MaxFiltersGuard;
@@ -131,7 +132,7 @@ class NormalizeFilterParamsTest extends TestCase
         $config = $this->createStub(Config::class);
         $config->method('isDebug')->willReturn(true);
 
-        return new NormalizeFilterParams($normalizer, $context, $flag, $response, $guard, $config, $this->logger);
+        return new NormalizeFilterParams($normalizer, $context, $flag, $response, $guard, $config, $this->logger, $this->createStub(PathUrl::class));
     }
 
     /**

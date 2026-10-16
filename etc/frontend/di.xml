@@ -6,10 +6,16 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <!-- The All Products page's URL key (1.2), after Magento's URL rewrite router (20), before the standard router (30). -->
+    <!-- 1.2: path filter URLs before Magento's URL rewrite router (20) takes the category path; the All Products page's URL
+         key after it, before the standard router (30). -->
     <type name="Magento\Framework\App\RouterList">
         <arguments>
             <argument name="routerList" xsi:type="array">
+                <item name="openfilter_path_filters" xsi:type="array">
+                    <item name="class" xsi:type="string">Iranimij\OpenFilter\Controller\PathRouter</item>
+                    <item name="disable" xsi:type="boolean">false</item>
+                    <item name="sortOrder" xsi:type="string">15</item>
+                </item>
                 <item name="openfilter_all_products" xsi:type="array">
                     <item name="class" xsi:type="string">Iranimij\OpenFilter\Controller\Router</item>
                     <item name="disable" xsi:type="boolean">false</item>

@@ -31,6 +31,7 @@ class Config
     public const XML_PATH_STICKY = 'openfilter/display/sticky';
     public const XML_PATH_QUICK_BAR_SIZE = 'openfilter/display/quick_bar_size';
     public const XML_PATH_PAGINATION = 'openfilter/display/pagination';
+    public const XML_PATH_URL_FORMAT = 'openfilter/seo/url_format';
     public const XML_PATH_META_TITLE = 'openfilter/seo/meta_title';
     public const XML_PATH_META_DESCRIPTION = 'openfilter/seo/meta_description';
     public const XML_PATH_H1 = 'openfilter/seo/h1';
@@ -47,6 +48,10 @@ class Config
     public const PAGINATION_PAGES = 'pages';
     public const PAGINATION_LOAD_MORE = 'load_more';
     public const PAGINATION_INFINITE = 'infinite';
+
+    /** Filter URLs (1.2): query parameters (?color=black) or path segments (/color-black.html) on category pages. */
+    public const URL_FORMAT_QUERY = 'query';
+    public const URL_FORMAT_PATH = 'path';
 
     private bool $loggedReplacement = false;
 
@@ -183,6 +188,19 @@ class Config
         $mode = $this->reader->getString(self::XML_PATH_APPLY_MODE, ScopeInterface::SCOPE_STORE, $storeId);
 
         return $mode === self::APPLY_BUTTON ? self::APPLY_BUTTON : self::APPLY_INSTANT;
+    }
+
+    /**
+     * Filter URLs of category pages (1.2); search pages always use query parameters.
+     *
+     * @param int|null $storeId
+     * @return string URL_FORMAT_QUERY or URL_FORMAT_PATH
+     */
+    public function getUrlFormat(?int $storeId = null): string
+    {
+        $format = $this->reader->getString(self::XML_PATH_URL_FORMAT, ScopeInterface::SCOPE_STORE, $storeId);
+
+        return $format === self::URL_FORMAT_PATH ? self::URL_FORMAT_PATH : self::URL_FORMAT_QUERY;
     }
 
     /**

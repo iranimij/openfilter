@@ -65,6 +65,6 @@ Each URL is the canonical one (`/women/tops.html?color=red`, the store view's UR
 
 Filter clicks fetch the same URL a crawler would and copy the title, meta description, robots, canonical and prev/next links from it, and the H1 when a heading template is set, so the page in the browser always carries the head a direct load of that URL has.
 
-## Not yet
+## Path URLs (1.2)
 
-Path-style URLs (`/women/tops/red.html`) are planned as an option for 1.2.
+Category pages can use path filter URLs (`/women/tops-women/color-black.html`), see [Filter URLs](url-format.md#path-urls-12-opt-in). Robots, nofollow, canonical and sitemap rules are the same; canonical URLs and sitemap entries use the path form, and the other form redirects (301) to it.

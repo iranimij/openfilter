@@ -28,6 +28,21 @@ Every filter URL has one canonical form: filters in position order, values in op
 
 Links OpenFilter renders are canonical already, so shoppers and crawlers never hit the redirect; it catches hand-written, old and external links and keeps one cache entry per filtered page.
 
+## Path URLs (1.2, opt-in)
+
+*Stores › Configuration › OpenFilter › SEO › Filter URLs on category pages* = *Paths* writes the filters of category pages as path segments instead of query parameters:
+
+```
+/women/tops-women.html?color=black,blue&size=m   →   /women/tops-women/color-black,blue/size-m.html
+```
+
+- One segment per filter, `<URL name of the filter>-<values>`, values comma-separated as in the query format, filters in position order, then the category URL suffix. Ranges keep their format: `price-10-50`, `price--50`, `price-100-`.
+- Page number, sort order and view mode stay in the query: `/women/tops-women/color-black.html?p=2`.
+- A filter whose segment could read as another filter (a URL name that starts with another one plus a dash) stays in the query, so every URL reads back to the same filters.
+- Query links (old links, the no-JavaScript slider and dropdown forms) and segments in another order answer with a **301** to the canonical path. Switching back to query parameters redirects path links the same way.
+- Search result pages and the All Products page keep query parameters; category URLs without a URL rewrite (`catalog/category/view/id/12`) too.
+- The path is resolved before Magento's URL rewrite router, from cached settings: no extra SQL query, one search request as before. Canonical tags, the XML sitemap and every link follow the format.
+
 ## Reading and writing URLs in code
 
-`Iranimij\OpenFilter\Api\UrlCodecInterface` turns parameters into an `Api\FilterStateInterface` (`decode`) and back (`encode`, `urlFor`). Unknown parameters are ignored, values are checked against the attribute's options, numbers are clamped (price ≥ 0, ≤ 10⁹; rating 1–5).
+`Iranimij\OpenFilter\Api\UrlCodecInterface` turns parameters into an `Api\FilterStateInterface` (`decode`) and back (`encode`, `urlFor`; the query format). `Model\Url\PathUrl` builds and reads the path format. Unknown parameters are ignored, values are checked against the attribute's options, numbers are clamped (price ≥ 0, ≤ 10⁹; rating 1–5).

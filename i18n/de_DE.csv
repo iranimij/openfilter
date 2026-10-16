@@ -323,3 +323,7 @@
 "URL key","URL-Schlüssel"
 "Below the store's address, for example all-products or shop/all.html. A page that already has this address (a category, a CMS page) keeps it.","Unter der Adresse des Shops, zum Beispiel all-products oder shop/all.html. Eine Seite, die diese Adresse schon hat (eine Kategorie, eine CMS-Seite), behält sie."
 "Page title and heading","Seitentitel und Überschrift"
+"Query parameters (?color=black)","Abfrageparameter (?color=black)"
+"Paths (/color-black.html)","Pfade (/color-black.html)"
+"Filter URLs on category pages","Filter-URLs auf Kategorieseiten"
+"Paths read like folders (women/tops/color-black,blue.html); query parameters are Magento's way (?color=black,blue). Old links of the other kind redirect (301). Search pages always use query parameters.","Pfade lesen sich wie Ordner (women/tops/color-black,blue.html); Abfrageparameter sind Magentos Weg (?color=black,blue). Alte Links der anderen Art leiten um (301). Suchseiten verwenden immer Abfrageparameter."

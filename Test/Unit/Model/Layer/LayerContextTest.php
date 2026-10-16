@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace Iranimij\OpenFilter\Test\Unit\Model\Layer;
 
+use Iranimij\OpenFilter\Model\Url\PathUrl;
 use Iranimij\OpenFilter\Api\UrlCodecInterface;
 use Iranimij\OpenFilter\Model\Config;
 use Iranimij\OpenFilter\Model\Config\Defaults;
@@ -60,7 +61,7 @@ class LayerContextTest extends TestCase
         $config = $this->createStub(Config::class);
         $config->method('isEnabled')->willReturn(true);
 
-        $context = new LayerContext($config, $configProvider, $stateProvider, $codec, $storeManager, $request, $url);
+        $context = new LayerContext($config, $configProvider, $stateProvider, $codec, $storeManager, $request, $url, $this->createStub(PathUrl::class));
 
         self::assertTrue($context->isActive());
         self::assertTrue($context->isHidden(144, null), 'size hidden by the merchant');

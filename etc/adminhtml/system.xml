@@ -96,6 +96,12 @@
             </group>
             <group id="seo" translate="label" type="text" sortOrder="18" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>SEO</label>
+                <field id="url_format" translate="label comment" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Filter URLs on category pages</label>
+                    <comment>Paths read like folders (women/tops/color-black,blue.html); query parameters are Magento's way (?color=black,blue). Old links of the other kind redirect (301). Search pages always use query parameters.</comment>
+                    <source_model>Iranimij\OpenFilter\Model\Config\Source\UrlFormat</source_model>
+                    <backend_model>Iranimij\OpenFilter\Model\Config\Backend\PageCacheValue</backend_model>
+                </field>
                 <field id="nofollow_threshold" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Ask search engines not to follow filter links from this many active values</label>
                     <comment>Keeps crawlers out of endless filter combinations. 0 = never.</comment>
