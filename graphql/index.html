@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://iranimij.github.io/openfilter/graphql/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>GraphQL (headless) - OpenFilter</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "GraphQL (headless)";
+        var mkdocs_page_input_path = "graphql.md";
+        var mkdocs_page_url = "/openfilter/graphql/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> OpenFilter
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../install/">Install</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../filters/">Filters</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../admin/">Admin</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../storefront/">Storefront</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../url-format/">Filter URLs</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../seo/">SEO rules</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">GraphQL (headless)</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#what-you-get">What you get</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#good-to-know">Good to know</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../benchmark/">Benchmark</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cli/">Command line</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../import-export/">Import and export</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/">Troubleshooting</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../coexistence/">Other search modules</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../upgrade-uninstall/">Upgrade and uninstall</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Developers</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../hyva-integration/">Hyvä integration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../facet-counts/">Facet counts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../index-fields/">Index fields</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">OpenFilter</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">GraphQL (headless)</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/iranimij/openfilter/edit/main/docs/graphql.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="graphql-headless">GraphQL (headless)<a class="headerlink" href="#graphql-headless" title="Permanent link">&para;</a></h1>
+<p>Headless storefronts (PWA Studio, Next.js, Vue Storefront, your own) get OpenFilter's layered navigation from Magento's <code>products</code> query: add the field <code>openfilter_aggregations</code>.</p>
+<pre><code class="language-graphql">query ($filter: ProductAttributeFilterInput) {
+  products(filter: $filter, pageSize: 24) {
+    total_count
+    items { name sku }
+    openfilter_aggregations {
+      code filter_key label url_param display_mode multiselect logic tooltip position
+      options { value label url_value count selected depth from to swatch { type value } }
+      range { min max from to }
+    }
+  }
+}
+</code></pre>
+<pre><code class="language-json">{ &quot;filter&quot;: { &quot;category_id&quot;: { &quot;eq&quot;: &quot;21&quot; }, &quot;color&quot;: { &quot;in&quot;: [&quot;49&quot;, &quot;50&quot;] }, &quot;size&quot;: { &quot;eq&quot;: &quot;167&quot; } } }
+</code></pre>
+<h2 id="what-you-get">What you get<a class="headerlink" href="#what-you-get" title="Permanent link">&para;</a></h2>
+<ul>
+<li>The store view's filters (send the <code>Store</code> header) in the merchant's order, only where they show (<strong>Where it shows</strong>, by the <code>category_id</code> or <code>category_uid</code> of the query), with the labels, tooltips and URL names of that store view.</li>
+<li><strong>Counts that help shoppers pick:</strong> each filter is counted without its own picks, so with Black and Blue picked, Green still shows how many products it would add. Filters set to <em>Products must match all of the picked values</em> (<code>logic: "and"</code>) count with their picks. Values without products are left out unless picked.</li>
+<li><strong>Picks:</strong> <code>selected</code> marks the values of the <code>filter</code> argument; <code>value</code> is what to send back (<code>filter_key</code> names the argument: the attribute code, <code>price</code>, or <code>category_id</code>).</li>
+<li><strong>Sliders</strong> (<code>display_mode</code> <code>slider</code> or <code>from_to</code>): <code>range.min</code> / <code>range.max</code> of the products found without the slider's own pick, <code>range.from</code> / <code>range.to</code> the picked bounds.</li>
+<li><strong>Ranges</strong> (<code>display_mode</code> <code>ranges</code>): options <code>from</code>–<code>to</code>, [from, to), with counts. Send one as <code>price: { from: "10", to: "30" }</code>.</li>
+<li><strong>Categories:</strong> the categories below the queried category (the store's root category without one), as many levels as the category tree is set to (<code>depth</code> 1 = a child), with Magento's counts. Pick one by querying its <code>category_id</code>.</li>
+<li><strong>Swatches:</strong> <code>swatch.type</code> <code>color</code> (value <code>#hex</code>), <code>image</code> (value a URL) or <code>text</code>.</li>
+</ul>
+<p>Everything comes from the same search request as the products: with the <em>single query</em> strategy OpenFilter adds no request to Magento's own (measured in the integration tests).</p>
+<h2 id="good-to-know">Good to know<a class="headerlink" href="#good-to-know" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Prices and ranges are in the units of Magento's <code>price</code> filter (the price index), not converted to the display currency.</li>
+<li>Magento's <code>aggregations</code> field of the same query counts the same way (it is the same search). Queries without <code>openfilter_aggregations</code> are unchanged.</li>
+<li>The built-in <strong>rating</strong>, <strong>in stock</strong>, <strong>on sale</strong> and <strong>new</strong> filters depend on the shopper's session on the storefront and are not part of GraphQL yet.</li>
+<li>The storefront picks several categories on one page (<code>?cat=21,25</code>); Magento's <code>category_id</code> argument lists one category per query, so a headless page picks one category at a time.</li>
+<li>GraphQL is optional: OpenFilter does not require Magento's GraphQL modules (<code>composer suggest</code>), and a store without them is unaffected.</li>
+</ul>
+<p>A complete page that uses only this field and plain JavaScript is in <a href="https://github.com/iranimij/openfilter/tree/main/examples/headless"><code>examples/headless</code></a>.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../seo/" class="btn btn-neutral float-left" title="SEO rules"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../benchmark/" class="btn btn-neutral float-right" title="Benchmark">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/iranimij/openfilter" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../seo/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../benchmark/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

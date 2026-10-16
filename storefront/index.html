@@ -62,6 +62,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#what-happens-on-a-click">What happens on a click</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#layouts-and-apply-mode-11">Layouts and apply mode (1.1)</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#phones">Phones</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#without-javascript">Without JavaScript</a>
@@ -89,6 +91,14 @@
               </ul>
               <ul>
                 <li class="toctree-l1"><a class="reference internal" href="../seo/">SEO rules</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../graphql/">GraphQL (headless)</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../benchmark/">Benchmark</a>
                 </li>
               </ul>
               <ul>
@@ -164,6 +174,15 @@
 <li>If the response is not a normal page (an error or a timeout), the browser simply loads the URL.</li>
 <li>If a range or a typed URL leaves no products, the chips show <strong>No products match. Remove the last filter</strong> with a link back.</li>
 </ul>
+<h2 id="layouts-and-apply-mode-11">Layouts and apply mode (1.1)<a class="headerlink" href="#layouts-and-apply-mode-11" title="Permanent link">&para;</a></h2>
+<p>Stores › Configuration › Iranimij › OpenFilter › Display (per store view; the defaults keep 1.0's behaviour):</p>
+<ul>
+<li><strong>Bar above the products:</strong> the filters move above the chips and the results, the page uses one column (the sidebar's other blocks, such as compare and wish list, are left out on these pages), and every filter is a popover that starts closed. The filters take one row; the rest wait behind <strong>More filters (N)</strong>. One popover is open at a time; Escape or a click outside closes it. Phones open the same filters as the drawer.</li>
+<li><strong>After "Show N products":</strong> on desktop, picks are staged like in the phone drawer: the filters update with their counts, a bar at the bottom of the window shows <em>Show N products</em> and <em>Reset</em>, and the results load once. Phones keep the drawer.</li>
+<li><strong>Keep the sidebar in view:</strong> the sidebar stays next to the products while shoppers scroll (<code>--of-sticky-top</code>). It needs CSS <code>:has()</code>; older browsers show a normal sidebar. The theme's sidebar spans the product rows while this is on; the second sidebar moves below it.</li>
+<li><strong>Dropdown</strong> (per filter) is a native select in a GET form: without JavaScript its button sends it, with JavaScript a change loads the result in place.</li>
+</ul>
+<p>These parts load a small extra script (<code>js/extras.phtml</code>, under 1.5 KB gzipped) only on store views that use one of them; the default page keeps the 6 KB budget.</p>
 <h2 id="phones">Phones<a class="headerlink" href="#phones" title="Permanent link">&para;</a></h2>
 <p>Below 768 px the filters move into a drawer, opened by a sticky <strong>Filter (N)</strong> button above the results (N counts the active values).</p>
 <ul>
@@ -211,7 +230,7 @@
 </tr>
 <tr>
 <td>One filter</td>
-<td><code>details.of-group.of-group--{list,swatch,slider,from_to,rating,toggle,category}[data-of-group="&lt;key&gt;"]</code></td>
+<td><code>details.of-group.of-group--{list,swatch,slider,from_to,rating,toggle,category,dropdown,ranges,tree}[data-of-group="&lt;key&gt;"]</code> (the last three from 1.1)</td>
 </tr>
 <tr>
 <td>Option</td>
@@ -236,6 +255,30 @@
 <tr>
 <td>Drawer button, footer</td>
 <td><code>button[data-of-drawer-open]</code>, <code>[data-of-drawer-apply]</code>, <code>[data-of-drawer-clear]</code></td>
+</tr>
+<tr>
+<td>Hint (1.1): "all must match", tooltip</td>
+<td><code>p.of-group__hint</code> (with <code>span.of-group__match</code>) at the top of <code>.of-group__body</code>; next to "all must match" the tooltip sits in <code>details.of-about</code> ("About …")</td>
+</tr>
+<tr>
+<td>More filters (1.1, horizontal bar)</td>
+<td><code>button.of-more-filters[data-of-more-filters]</code>; filters beyond the first row get <code>.of-group--overflow</code></td>
+</tr>
+<tr>
+<td>Dropdown (1.1)</td>
+<td><code>form.of-dropdown</code> with <code>select[data-of-dropdown-select]</code> and <code>button.of-dropdown__go</code> (hidden once <code>html.of-js</code> is set)</td>
+</tr>
+<tr>
+<td>Category tree level (1.1)</td>
+<td><code>li.of-options__item--depth-{1..5}</code></td>
+</tr>
+<tr>
+<td>Horizontal bar, sticky sidebar (1.1)</td>
+<td><code>dialog.of-drawer--horizontal</code>, <code>dialog.of-drawer--sticky</code></td>
+</tr>
+<tr>
+<td>Desktop apply bar (1.1)</td>
+<td><code>[data-of-apply-bar]</code> with <code>[data-of-apply-show]</code> and <code>[data-of-apply-reset]</code></td>
 </tr>
 </tbody>
 </table>
@@ -295,6 +338,11 @@
 <td><code>--of-row</code></td>
 <td><code>2rem</code> (<code>2.75rem</code> on touch screens)</td>
 <td>option row height</td>
+</tr>
+<tr>
+<td><code>--of-sticky-top</code></td>
+<td><code>1rem</code></td>
+<td>distance of the sticky sidebar from the top (1.1; raise it under a sticky header)</td>
 </tr>
 </tbody>
 </table>

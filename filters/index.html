@@ -78,6 +78,14 @@
                 </li>
               </ul>
               <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../graphql/">GraphQL (headless)</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../benchmark/">Benchmark</a>
+                </li>
+              </ul>
+              <ul>
                 <li class="toctree-l1"><a class="reference internal" href="../cli/">Command line</a>
                 </li>
               </ul>
@@ -138,8 +146,11 @@
 <h2 id="behaviour">Behaviour<a class="headerlink" href="#behaviour" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Multi-select (OR within an attribute, AND across attributes)</strong> with disjunctive counts: options of an active filter are counted as if that filter were not set (<a href="../facet-counts/">Facet counts</a>).</li>
+<li><strong>"Products must match all of the picked values" (1.1)</strong> per option filter: for features a product has several of (a jacket that is <em>Hooded</em> and <em>Full Zip</em>), the picked values combine with AND. Counts then say how many products have that value as well, so they shrink as values are added; the page still costs one search request.</li>
 <li>Options without products are hidden (Magento's "Filterable (with results)"), unless selected. A filter with a single option is hidden unless something is selected.</li>
 <li><strong>Sliders</strong> (price, decimal attributes): bounds come from the same search request, ignore the slider's own range, and follow the customer group's prices; price bounds are shown in the display currency and tax display (default product tax class).</li>
+<li><strong>Ranges (1.1)</strong> (price, decimal attributes, display type <em>Ranges</em>): a list such as €0.00–€39.99, €40.00–€59.99, €60.00 and above. A range includes its lower bound and stops before the upper one. Your own list (<code>0-40,40-60,60-</code>) or automatic ranges: about five, with round bounds (steps of 1, 2 or 5 × 10ⁿ) in the currency shoppers see. With "Shoppers can pick several values" on, picked ranges combine with <em>any of</em> (<code>?price=0-40,60-</code>). Counts come from the same search request and ignore the price pick, like every other filter.</li>
+<li><strong>Category: drill-down or tree (1.1).</strong> <em>Checkbox list</em> is Magento's drill-down (a link leaves for the subcategory). <em>Category tree</em> lists the categories below the page's category (the store's root on search pages) down to 1–5 levels with counts; picking one narrows the same page (<code>?cat=21</code>), several combine with <em>any of</em> (<code>?cat=21,25</code>) when "Shoppers can pick several values" is on. Counts come from the same search request and ignore the category picks. The tree is read from OpenFilter's cache (rebuilt when a category is saved, moved or deleted), so the page needs fewer SQL queries than Magento's drill-down.</li>
 <li><strong>Built-in filters</strong>: rating ("N stars and up"), in stock (only when out-of-stock products are displayed), on sale (per customer group and website), new ("Set Product as New" window, evaluated at request time). See <a href="../index-fields/">Index fields</a>.</li>
 </ul>
 <h2 id="coexistence">Coexistence<a class="headerlink" href="#coexistence" title="Permanent link">&para;</a></h2>

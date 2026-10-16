@@ -68,6 +68,14 @@
                 </li>
               </ul>
               <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../graphql/">GraphQL (headless)</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../benchmark/">Benchmark</a>
+                </li>
+              </ul>
+              <ul>
                 <li class="toctree-l1"><a class="reference internal" href="../cli/">Command line</a>
                 </li>
               </ul>
@@ -132,7 +140,10 @@
 <h2 id="upgrade">Upgrade<a class="headerlink" href="#upgrade" title="Permanent link">&para;</a></h2>
 <pre><code class="language-bash">composer update iranimij/openfilter-hyva-bundle --with-dependencies
 bin/magento setup:upgrade
+bin/magento setup:static-content:deploy   # production mode; in developer mode clean pub/static instead
+bin/magento cache:flush
 </code></pre>
+<p>Deploy the static content after every update: the stylesheet keeps its URL until the static content version changes, so without a deploy returning shoppers keep the previous <code>openfilter.css</code> from their browser cache (new parts of the page would show unstyled).</p>
 <p>OpenFilter follows semantic versioning: <code>Api/</code> interfaces, the URL format, the storefront markup contract (<a href="../storefront/">Storefront</a>) and the CLI JSON format change only in a major version. See the CHANGELOG of each package.</p>
 <h2 id="switch-off">Switch off<a class="headerlink" href="#switch-off" title="Permanent link">&para;</a></h2>
 <p><strong>Stores › Configuration › Iranimij › OpenFilter › General › Enable OpenFilter = No</strong> per store view. Magento's own layered navigation (and Hyvä's templates) return at once; settings and URL names stay.</p>
@@ -141,7 +152,7 @@ bin/magento setup:upgrade
 <pre><code class="language-bash">bin/magento module:uninstall Iranimij_OpenFilterHyva Iranimij_OpenFilter
 bin/magento indexer:reindex catalogsearch_fulltext
 </code></pre>
-<p>This removes the packages, OpenFilter's six tables (<code>openfilter_*</code>), its settings (<code>openfilter/*</code>) and the record of its data patches, so a later install starts with fresh defaults. Keep the export of your settings first: <code>bin/magento openfilter:config:export -o openfilter.json</code>. The reindex removes OpenFilter's fields from the product search index. Magento's attributes and their "Use in Layered Navigation" flags are never changed by OpenFilter.</p>
+<p>This removes the packages, OpenFilter's six tables (<code>openfilter_*</code>), its settings (<code>openfilter/*</code>) and the record of its data patches, so a later install starts with fresh defaults. Keep the export of your settings first: <code>bin/magento openfilter:config:export -o openfilter.json</code>. The reindex removes OpenFilter's fields from the product search index. Magento's attributes and their "Use in Layered Navigation" flags are never changed by OpenFilter; "Use in Search Results Layered Navigation" changes only when you use the grid's <em>Show on search pages</em> / <em>Hide on search pages</em>.</p>
 <p><code>iranimij/module-base</code> stays installed while other iranimij modules use it.</p>
               
             </div>

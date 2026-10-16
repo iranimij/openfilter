@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://iranimij.github.io/openfilter/benchmark/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Benchmark - OpenFilter</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Benchmark";
+        var mkdocs_page_input_path = "benchmark.md";
+        var mkdocs_page_url = "/openfilter/benchmark/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> OpenFilter
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../install/">Install</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../filters/">Filters</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../admin/">Admin</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../storefront/">Storefront</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../url-format/">Filter URLs</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../seo/">SEO rules</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../graphql/">GraphQL (headless)</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Benchmark</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#what-is-measured">What is measured</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#results">Results</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#other-modules">Other modules</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cli/">Command line</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../import-export/">Import and export</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/">Troubleshooting</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../coexistence/">Other search modules</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../upgrade-uninstall/">Upgrade and uninstall</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Developers</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../hyva-integration/">Hyvä integration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../facet-counts/">Facet counts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../index-fields/">Index fields</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">OpenFilter</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Benchmark</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/iranimij/openfilter/edit/main/docs/benchmark.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="benchmark">Benchmark<a class="headerlink" href="#benchmark" title="Permanent link">&para;</a></h1>
+<p>OpenFilter is measured against Magento's own layered navigation on the same store, with the same shopper scenarios, by a script anyone can run: <a href="https://github.com/iranimij/openfilter-dev-env/tree/main/bench"><code>bench/run.mjs</code></a> in the dev environment (<code>node bench/run.mjs</code>, or the E2E workflow with <code>bench=true</code>, which also fails when OpenFilter needs more engine requests than Magento or adds more than 15 ms).</p>
+<h2 id="what-is-measured">What is measured<a class="headerlink" href="#what-is-measured" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Measure</th>
+<th>How</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Search engine requests</td>
+<td>OpenSearch <code>_nodes/stats</code> <code>query_total</code> around one uncached page load</td>
+</tr>
+<tr>
+<td>Server time</td>
+<td>median of 11 uncached loads (Varnish and the page cache skipped), full HTML</td>
+</tr>
+<tr>
+<td>Page cache</td>
+<td>a scripted session of filter clicks; how many of a second shopper's pages Varnish answers</td>
+</tr>
+<tr>
+<td>OpenFilter's bytes</td>
+<td>its inline script and stylesheet on a filtered page, gzipped</td>
+</tr>
+</tbody>
+</table>
+<p>Magento runs with Hyvä's templates; scenarios use the URLs each mode understands (Magento: option ids, one value per filter) in their canonical spelling.</p>
+<h2 id="results">Results<a class="headerlink" href="#results" title="Permanent link">&para;</a></h2>
+<p>Magento 2.4.9, Hyvä 1.4.2, OpenSearch 2, Luma sample data, Varnish; local Docker (Warden) on an Apple laptop, 2026-10-15. Absolute times depend on the machine; compare the columns.</p>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Magento: engine requests · server time</th>
+<th>OpenFilter: engine requests · server time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Category page (Women › Tops)</td>
+<td>4 · 189 ms</td>
+<td>1 · 171 ms</td>
+</tr>
+<tr>
+<td>One filter (colour)</td>
+<td>4 · 173 ms</td>
+<td>1 · 171 ms</td>
+</tr>
+<tr>
+<td>Three filters (colour, size, price)</td>
+<td>4 · 159 ms</td>
+<td>1 · 160 ms</td>
+</tr>
+<tr>
+<td>Two values of one filter</td>
+<td>not possible</td>
+<td>1 · 175 ms</td>
+</tr>
+<tr>
+<td>Search page</td>
+<td>4 · 169 ms</td>
+<td>1 · 160 ms</td>
+</tr>
+<tr>
+<td>Search with a filter</td>
+<td>4 · 170 ms</td>
+<td>1 · 165 ms</td>
+</tr>
+<tr>
+<td>Second shopper's clicks served by Varnish</td>
+<td>5 of 5</td>
+<td>6 of 6</td>
+</tr>
+</tbody>
+</table>
+<p>OpenFilter's own bytes on a filtered page: script 6.0 KB, stylesheet 2.9 KB (gzipped). Lighthouse with OpenFilter on and off: same performance score (1.00), no layout shift added (the E2E workflow checks it on every run).</p>
+<p>What the numbers say:</p>
+<ul>
+<li><strong>One search request per page, whatever is picked.</strong> Magento asks the engine four times per page (the products and its price intervals); OpenFilter gets products, every filter's counts (each without its own picks, so shoppers see what another value adds) and the slider bounds from one request. With the <em>per attribute</em> strategy (older engines) it adds one request per other active filter.</li>
+<li><strong>No server time added</strong>, while doing more: several values per filter, disjunctive counts, built-in filters, SEO tags.</li>
+<li><strong>Every filter click is a cacheable page.</strong> The AJAX layer fetches the same URL a browser would, so Varnish serves repeat clicks and the back button.</li>
+</ul>
+<p>The integration tests hold the same line on every Magento version in CI: 0 extra SQL queries and at most +15 ms server time per category page (measured −35 to −55 ms).</p>
+<h2 id="other-modules">Other modules<a class="headerlink" href="#other-modules" title="Permanent link">&para;</a></h2>
+<p>Paid modules are not installed or measured (OpenFilter is written clean room). Their public pages, checked on 2026-10-15, publish no measured page times or engine request counts:</p>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>What its public page says about speed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://mirasvit.com/magento-2-extensions/layered-navigation.html">Mirasvit Layered Navigation</a></td>
+<td>runs in production on catalogs of up to 600,000 SKUs; option counts are cached for up to an hour; "needs a properly sized server and a healthy OpenSearch instance to stay fast"; a changelog entry removes about 23 KB of JavaScript from pages with its widget</td>
+</tr>
+<tr>
+<td><a href="https://amasty.com/improved-layered-navigation-for-magento-2.html">Amasty Improved Layered Navigation</a></td>
+<td>describes AJAX filtering as faster; no measured numbers found (the page refused automated reading)</td>
+</tr>
+<tr>
+<td><a href="https://www.mageplaza.com/magento-2-layered-navigation-extension/">Mageplaza Layered Navigation</a></td>
+<td>describes AJAX filtering as faster; no measured numbers found</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Smile-SA/elasticsuite">ElasticSuite</a></td>
+<td>replaces Magento's search stack; no layered navigation timings published</td>
+</tr>
+</tbody>
+</table>
+<p>If a vendor publishes measurements, open an issue and the table will link them.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../graphql/" class="btn btn-neutral float-left" title="GraphQL (headless)"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../cli/" class="btn btn-neutral float-right" title="Command line">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/iranimij/openfilter" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../graphql/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../cli/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

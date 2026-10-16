@@ -76,11 +76,23 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#canonical-parameters-301">Canonical parameters (301)</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#title-description-and-h1-11">Title, description and H1 (1.1)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#xml-sitemap-11">XML sitemap (1.1)</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#after-ajax-updates">After AJAX updates</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#not-in-10">Not in 1.0</a>
+    <li class="toctree-l2"><a class="reference internal" href="#not-yet">Not yet</a>
     </li>
     </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../graphql/">GraphQL (headless)</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../benchmark/">Benchmark</a>
                 </li>
               </ul>
               <ul>
@@ -196,16 +208,59 @@
 <p>A URL with more than <strong>5</strong> active values ("Most filter values active at once") answers with a <strong>302</strong> to the URL with its first five values (in canonical order) and an <code>X-Robots-Tag: noindex</code> header. Bots that combine every filter end on a page that already exists, and your page cache does not fill with combinations nobody visits. <code>0</code> means no limit.</p>
 <h2 id="canonical-parameters-301">Canonical parameters (301)<a class="headerlink" href="#canonical-parameters-301" title="Permanent link">&para;</a></h2>
 <p>Every filtered URL has one canonical spelling (filters in position order, values in option order, readable URL names, lower case). Other spellings, such as an old link with option ids, answer with a <strong>301</strong> to it. See <a href="../url-format/">Filter URLs</a>.</p>
+<h2 id="title-description-and-h1-11">Title, description and H1 (1.1)<a class="headerlink" href="#title-description-and-h1-11" title="Permanent link">&para;</a></h2>
+<p><strong>Stores › Configuration › Catalog › OpenFilter › SEO</strong> has three templates for filtered category pages. Each is set per store view; empty keeps Magento's.</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Example</th>
+<th>On <code>/women/tops.html?color=red,blue</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Page title of filtered pages</td>
+<td><code>{filters} {category} \| {store}</code></td>
+<td><code>Red, Blue Tops \| Luma</code></td>
+</tr>
+<tr>
+<td>Meta description of filtered pages</td>
+<td><code>Shop {filters} {category} at {store}.</code></td>
+<td><code>Shop Red, Blue Tops at Luma.</code></td>
+</tr>
+<tr>
+<td>Heading (H1) of filtered pages</td>
+<td><code>{filters} {category}</code></td>
+<td><code>Red, Blue Tops</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>{category}</code> is the category name, <code>{filters}</code> the active values in the order of the page ("Red, Blue"), <code>{store}</code> the store name. Other text in braces stays as it is.</li>
+<li>Pages without filters, and search result pages, keep Magento's title, description and heading.</li>
+<li>Search results show about 60 characters of a title and 160 of a description; keep the templates short. The settings page counts the characters as you type.</li>
+<li>A title template does not change the heading; set the H1 template for that.</li>
+</ul>
+<h2 id="xml-sitemap-11">XML sitemap (1.1)<a class="headerlink" href="#xml-sitemap-11" title="Permanent link">&para;</a></h2>
+<p>Turn on <strong>Add indexable filter pages</strong> under <strong>Stores › Configuration › Catalog › OpenFilter › XML sitemap</strong>, then generate the sitemap as usual (<strong>Marketing › SEO &amp; Search › Site Map</strong>, or Magento's cron). OpenFilter adds the pages its robots rule leaves indexable, and only those:</p>
+<ul>
+<li>one value of a filter marked <strong>Let Google index pages filtered by this</strong> (dropdown and multiple-select attributes), on each category page of the store view;</li>
+<li>only where the filter shows (<strong>Where it shows</strong>; a category counts with the categories below it);</li>
+<li>only with at least <strong>Only pages with at least this many products</strong> products (default 1), counted as shoppers see them;</li>
+<li>the pages with the most products first, up to <strong>Most filter pages per store view</strong> (default 5,000; 0 = no limit).</li>
+</ul>
+<p>Each URL is the canonical one (<code>/women/tops.html?color=red</code>, the store view's URL names) with the categories' priority, change frequency and last modified date. Counting asks the search engine once per category, so a catalog with thousands of categories takes a little longer to generate.</p>
 <h2 id="after-ajax-updates">After AJAX updates<a class="headerlink" href="#after-ajax-updates" title="Permanent link">&para;</a></h2>
-<p>Filter clicks fetch the same URL a crawler would and copy the title, robots, canonical and prev/next links from it, so the page in the browser always carries the head a direct load of that URL has.</p>
-<h2 id="not-in-10">Not in 1.0<a class="headerlink" href="#not-in-10" title="Permanent link">&para;</a></h2>
-<p>Meta title, description and H1 templates for filtered pages and an XML sitemap of indexable filter pages arrive in 1.1. Path-style URLs (<code>/women/tops/red.html</code>) are planned as an option for 1.2.</p>
+<p>Filter clicks fetch the same URL a crawler would and copy the title, meta description, robots, canonical and prev/next links from it, and the H1 when a heading template is set, so the page in the browser always carries the head a direct load of that URL has.</p>
+<h2 id="not-yet">Not yet<a class="headerlink" href="#not-yet" title="Permanent link">&para;</a></h2>
+<p>Path-style URLs (<code>/women/tops/red.html</code>) are planned as an option for 1.2.</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../url-format/" class="btn btn-neutral float-left" title="Filter URLs"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../cli/" class="btn btn-neutral float-right" title="Command line">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../graphql/" class="btn btn-neutral float-right" title="GraphQL (headless)">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -235,7 +290,7 @@
       <span><a href="../url-format/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../cli/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../graphql/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

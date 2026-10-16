@@ -58,8 +58,12 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#filters-grid">Filters grid</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#sort-filters-11">Sort filters (1.1)</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#filter-form">Filter form</a>
         <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#one-store-view-at-a-time">One store view at a time</a>
+    </li>
     <li class="toctree-l3"><a class="reference internal" href="#url-names">URL names</a>
     </li>
         </ul>
@@ -83,6 +87,14 @@
               </ul>
               <ul>
                 <li class="toctree-l1"><a class="reference internal" href="../seo/">SEO rules</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../graphql/">GraphQL (headless)</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../benchmark/">Benchmark</a>
                 </li>
               </ul>
               <ul>
@@ -143,12 +155,15 @@
 <h2 id="first-run">First run<a class="headerlink" href="#first-run" title="Permanent link">&para;</a></h2>
 <p>After installing, the admin shows a notice: how many filterable attributes OpenFilter found and which defaults it set (colours as swatches, sizes as text swatches, price as a slider, other lists as checkbox lists, Yes/No attributes as switches). Rating, In stock, On sale and New start switched off. <strong>Review defaults</strong> opens the Filters grid and dismisses the notice.</p>
 <h2 id="filters-grid">Filters grid<a class="headerlink" href="#filters-grid" title="Permanent link">&para;</a></h2>
-<p>One row per filter: label, code, type (attribute or built-in), how it looks, several values, options before "Show more", search box threshold, "Google may index", position, storefront (shown or hidden).</p>
+<p>One row per filter: label, code, type (attribute or built-in), how it looks, several values, options before "Show more", search box threshold, "Google may index", order (its place on the storefront: 1, 2, 3 …), position (the number behind the order), products must match (any / all), where it shows, storefront (shown or hidden).</p>
+<p>Above the grid, warnings name what shoppers would trip over: two active filters with the same name (rename one in <em>Label and tooltip</em>, or hide one), and search result pages without attribute filters.</p>
 <ul>
 <li><strong>Inline edit</strong>: click a row, change the common fields, Save. Each row is saved on its own; a row with a value that does not fit (for example swatches on an attribute without swatches) reports its error and the other rows are still saved.</li>
-<li><strong>Mass actions</strong>: <em>Show on the storefront</em>, <em>Hide from the storefront</em>, <em>Reset to defaults</em> (labels per store view and URL names are kept). Hiding a filter never changes the attribute's own "Use in Layered Navigation" setting, so it stays in the grid.</li>
+<li><strong>Mass actions</strong>: <em>Show on the storefront</em>, <em>Hide from the storefront</em>, <em>Show on search pages</em>, <em>Hide on search pages</em>, <em>Reset to defaults</em> (labels per store view and URL names are kept). Hiding a filter never changes the attribute's own "Use in Layered Navigation" setting, so it stays in the grid. <em>Show / Hide on search pages</em> set the attribute's "Use in Search Results Layered Navigation" (built-in filters always show on search pages).</li>
 <li>Row actions: <strong>Edit</strong> and <strong>Why is it not showing?</strong></li>
 </ul>
+<h2 id="sort-filters-11">Sort filters (1.1)<a class="headerlink" href="#sort-filters-11" title="Permanent link">&para;</a></h2>
+<p>Catalog › OpenFilter › Filters › <strong>Sort filters</strong> lists every filter in its storefront order. Drag a filter by its handle, or use <strong>Move up</strong> / <strong>Move down</strong> (keyboard friendly: focus stays on the button and the new place is announced). <strong>Find a filter</strong> narrows the list by name; <strong>Save order</strong> stays at the bottom of the window and writes the positions 10, 20, 30… in one go (the gaps leave room for a filter later); the grid's <em>Position</em> column and the form show the same numbers.</p>
 <h2 id="filter-form">Filter form<a class="headerlink" href="#filter-form" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -164,29 +179,42 @@
 </tr>
 <tr>
 <td>How it looks</td>
-<td>display type: only the types that fit the attribute are offered (swatches need swatch data, sliders a number attribute, the on/off switch a Yes/No attribute or a list with two options)</td>
+<td>display type: only the types that fit the attribute are offered (swatches need swatch data, sliders and ranges a number attribute or price, the on/off switch a Yes/No attribute or a list with two options, the category tree the category filter); <strong>Ranges</strong> (price and number filters, 1.1): a list such as <code>0-50,50-100,100-</code>, empty = automatic; <strong>Category tree levels</strong> (category filter, 1.1): 1–5</td>
 </tr>
 <tr>
 <td>How it behaves</td>
-<td>show on the storefront, several values, options before "Show more" (0 = all), search box from N options (0 = never), open when the page loads (automatic / open / closed), option order, hide when only one option is left, position (empty = the attribute's position)</td>
+<td>show on the storefront, several values, <strong>Products must match</strong> (option filters, 1.1): <em>any</em> of the picked values (more products) or <em>all</em> of them (fewer products, for features a product has several of), options before "Show more" (0 = all), search box from N options (0 = never), open when the page loads (automatic / open / closed), option order, hide when only one option is left, position (empty = the attribute's position)</td>
+</tr>
+<tr>
+<td>Where it shows (1.1)</td>
+<td><em>In every category</em> (default), <em>Only in these categories</em> or <em>In every category except these</em>, with Magento's category picker; a category counts with the categories below it; search result pages always show the filter</td>
 </tr>
 <tr>
 <td>SEO</td>
-<td>"Let Google index pages filtered by this" (single-value pages only), URL name of the filter, URL names of the options per store view</td>
+<td>"Let Google index pages filtered by this" (single-value pages only), URL name of the filter, URL names of the options</td>
 </tr>
 <tr>
-<td>Labels per store view</td>
-<td>a label for all store views and one per store view (empty = the attribute's label)</td>
+<td>Label and tooltip</td>
+<td>the label for all store views (empty = the attribute's label) and a tooltip (a short plain-text hint shoppers open next to the filter name, 1.1), or the chosen store view's own label and tooltip</td>
 </tr>
 </tbody>
 </table>
 <p>Saving is all or nothing: settings, labels and URL names are written in one transaction.</p>
+<h3 id="one-store-view-at-a-time">One store view at a time<a class="headerlink" href="#one-store-view-at-a-time" title="Permanent link">&para;</a></h3>
+<p>The form edits one scope at a time, chosen with the store view switcher at the top of the page (the same switcher as on product and category pages), so it looks the same with 2 or 50 store views:</p>
+<ul>
+<li><strong>All Store Views</strong> edits the settings (marked <code>[GLOBAL]</code>), the label for all store views and the URL names for all store views. <strong>Reset to defaults</strong> is offered only here.</li>
+<li><strong>A store view</strong> (for example <em>Deutsch</em>) edits only that store view's label, the filter's URL name and the option URL names in that store view. The values for all store views are shown next to them, read only; settings are read only. Each option row also shows the option's label in that store view.</li>
+<li>An empty store view field shows <em>Same as for all store views</em> and follows the value for all store views. Clearing a field puts the store view back on the shared value.</li>
+<li><strong>Save</strong> writes only the scope you are looking at and brings you back to it. Switching scope with unsaved changes asks first.</li>
+</ul>
+<p>To edit many store views in one go, use <code>openfilter:config:export</code> / <code>openfilter:config:import</code> (<a href="../import-export/">Import and export</a>).</p>
 <h3 id="url-names">URL names<a class="headerlink" href="#url-names" title="Permanent link">&para;</a></h3>
 <p>URL names are what shoppers and search engines see in filter URLs (<code>?color=blue,red</code>). They are created once from the option labels and <strong>never change because a label changed</strong> (see <a href="../url-format/">Filter URLs</a>).</p>
 <ul>
 <li>Option URL names are checked as one set per store view before anything is written: lowercase letters, digits and single dashes, at most 64 characters, no name used twice. Two options can swap names in one save.</li>
-<li>A store view field left empty uses the name for all store views; a store view row is only stored where the name differs.</li>
-<li><strong>Generate again from the label</strong> (per option) creates a fresh name from the option's label in every store view when you save. This changes published URLs; old URLs with option IDs keep working, old names do not.</li>
+<li>A store view field left empty uses the name for all store views; a store view row is only stored where the name differs. This also holds for the filter's own URL name (for example <code>farbe</code> in a German store view instead of <code>color</code>).</li>
+<li><strong>Generate again from the label</strong> (per option) creates a fresh name from the option's label when you save: in <strong>All Store Views</strong> for every store view, in a store view only for that store view. This changes published URLs; old URLs with option IDs keep working, old names do not.</li>
 </ul>
 <h2 id="attribute-page">Attribute page<a class="headerlink" href="#attribute-page" title="Permanent link">&para;</a></h2>
 <p>Stores › Attributes › Product › <em>attribute</em> › <strong>Storefront Properties</strong> has an <strong>OpenFilter</strong> fieldset for attributes that are filters: how it looks, several values, options before "Show more", search box threshold, URL name, "Let Google index". It is saved with the attribute (an invalid value stops the save). A link opens the full filter form for labels, option URL names and position.</p>
@@ -247,7 +275,7 @@
 </tr>
 </tbody>
 </table>
-<p>The same checks power <code>bin/magento openfilter:doctor</code> (1.0).</p>
+<p>The same checks power <code>bin/magento openfilter:doctor</code> (1.0). With a category picked, <strong>Open this category on the storefront</strong> (1.1) opens that category in the chosen store view in a new tab, to see the filter where shoppers do.</p>
 <h2 id="settings">Settings<a class="headerlink" href="#settings" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -290,6 +318,24 @@
 <td>store view</td>
 </tr>
 <tr>
+<td>Where filters show on desktop (1.1)</td>
+<td><code>openfilter/display/layout</code></td>
+<td>Sidebar next to the products</td>
+<td>store view</td>
+</tr>
+<tr>
+<td>When results update on desktop (1.1)</td>
+<td><code>openfilter/display/apply_mode</code></td>
+<td>At once, with every click</td>
+<td>store view</td>
+</tr>
+<tr>
+<td>Keep the sidebar in view while scrolling (1.1)</td>
+<td><code>openfilter/display/sticky</code></td>
+<td>No</td>
+<td>store view</td>
+</tr>
+<tr>
 <td>Ask search engines not to follow filter links from this many active values</td>
 <td><code>openfilter/seo/nofollow_threshold</code></td>
 <td>2</td>
@@ -299,6 +345,18 @@
 <td>Most filter values active at once</td>
 <td><code>openfilter/seo/max_active_values</code></td>
 <td>5</td>
+<td>store view</td>
+</tr>
+<tr>
+<td>Page title / meta description / H1 of filtered pages (1.1)</td>
+<td><code>openfilter/seo/meta_title</code>, <code>meta_description</code>, <code>h1</code></td>
+<td>empty (Magento's own)</td>
+<td>store view</td>
+</tr>
+<tr>
+<td>Add indexable filter pages to the XML sitemap (1.1)</td>
+<td><code>openfilter/sitemap/enabled</code>, <code>min_products</code>, <code>max_urls</code></td>
+<td>No, 1, 5000</td>
 <td>store view</td>
 </tr>
 <tr>
