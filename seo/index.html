@@ -207,7 +207,7 @@
 <h2 id="most-values-at-once">Most values at once<a class="headerlink" href="#most-values-at-once" title="Permanent link">&para;</a></h2>
 <p>A URL with more than <strong>5</strong> active values ("Most filter values active at once") answers with a <strong>302</strong> to the URL with its first five values (in canonical order) and an <code>X-Robots-Tag: noindex</code> header. Bots that combine every filter end on a page that already exists, and your page cache does not fill with combinations nobody visits. <code>0</code> means no limit.</p>
 <h2 id="canonical-parameters-301">Canonical parameters (301)<a class="headerlink" href="#canonical-parameters-301" title="Permanent link">&para;</a></h2>
-<p>Every filtered URL has one canonical spelling (filters in position order, values in option order, readable URL names, lower case). Other spellings, such as an old link with option ids, answer with a <strong>301</strong> to it. See <a href="../url-format/">Filter URLs</a>.</p>
+<p>Every filtered URL has one canonical spelling (filters in position order, values in option order, readable URL names, lower case). Other spellings, such as an old link with option ids, answer with a <strong>301</strong> to it; parameters in another order are left as they are (Magento's Varnish configuration sorts them) and name the canonical URL in their canonical tag. See <a href="../url-format/">Filter URLs</a>.</p>
 <h2 id="title-description-and-h1-11">Title, description and H1 (1.1)<a class="headerlink" href="#title-description-and-h1-11" title="Permanent link">&para;</a></h2>
 <p><strong>Stores › Configuration › Catalog › OpenFilter › SEO</strong> has three templates for filtered category pages. Each is set per store view; empty keeps Magento's.</p>
 <table>
