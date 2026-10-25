@@ -2,7 +2,7 @@
  * OpenFilter storefront structure (MIT). Theme-agnostic: of-* classes, logical properties (RTL mirrors itself),
  * theme tokens through custom properties. Restyle by setting --of-* on .of-drawer / .of-filters / .of-state.
  */
-.of-drawer,.of-filters,.of-state,.of-results{--of-accent:#1d4ed8;--of-muted:#6b7280;--of-border:#e5e7eb;--of-control:#9ca3af;--of-surface:#fff;--of-radius:.375rem;--of-card-radius:.5rem;--of-gap:.5rem;--of-row:2rem}
+.of-drawer,.of-filters,.of-state,.of-results,.of-apply{--of-accent:#1d4ed8;--of-muted:#6b7280;--of-border:#e5e7eb;--of-control:#9ca3af;--of-surface:#fff;--of-radius:.375rem;--of-card-radius:.5rem;--of-gap:.5rem;--of-row:2rem}
 .of-filters__title{margin-block:0 .75rem;font-size:1.125rem;font-weight:600}
 .of-group{margin-block-end:.75rem;padding-inline:1rem;border:1px solid var(--of-border);border-radius:var(--of-card-radius);background:var(--of-surface)}
 .of-group__title{position:relative;display:flex;align-items:center;gap:var(--of-gap);min-block-size:3.25rem;padding-block:.5rem;padding-inline-end:2.5rem;font-weight:600;cursor:pointer;list-style:none}

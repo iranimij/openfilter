@@ -24,7 +24,7 @@ Old links keep working: a numeric option id is accepted in place of its name.
 
 ## Canonical URLs (301)
 
-Every filter URL has one canonical form: filters in position order, values in option order, URL names, lower case, no duplicates or unknown values. Category and search pages answer other forms with a **301** to the canonical URL; sort order, limit and view mode stay, the page number resets only when values were dropped. Other parameters (tracking, for example) may sit anywhere. POST requests are never redirected.
+Every filter URL has one canonical form: filters in position order, values in option order, URL names, lower case, no duplicates or unknown values. Category and search pages answer other forms with a **301** to the canonical URL, except when only the order of the parameters differs (Magento's Varnish configuration sorts query parameters before Magento sees them, so a redirect for the order would loop; the canonical tag names the one URL); sort order, limit and view mode stay, the page number resets only when values were dropped. Other parameters (tracking, for example) may sit anywhere. POST requests are never redirected.
 
 Links OpenFilter renders are canonical already, so shoppers and crawlers never hit the redirect; it catches hand-written, old and external links and keeps one cache entry per filtered page.
 

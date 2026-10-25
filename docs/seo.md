@@ -33,7 +33,7 @@ A URL with more than **5** active values ("Most filter values active at once") a
 
 ## Canonical parameters (301)
 
-Every filtered URL has one canonical spelling (filters in position order, values in option order, readable URL names, lower case). Other spellings, such as an old link with option ids, answer with a **301** to it. See [Filter URLs](url-format.md).
+Every filtered URL has one canonical spelling (filters in position order, values in option order, readable URL names, lower case). Other spellings, such as an old link with option ids, answer with a **301** to it; parameters in another order are left as they are (Magento's Varnish configuration sorts them) and name the canonical URL in their canonical tag. See [Filter URLs](url-format.md).
 
 ## Title, description and H1 (1.1)
 

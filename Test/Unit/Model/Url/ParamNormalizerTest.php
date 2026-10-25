@@ -30,7 +30,9 @@ class ParamNormalizerTest extends TestCase
             'canonical, other params anywhere' => [['utm_source' => 'x', 'color' => 'red', 'product_list_order' => 'name'], false, false],
             'no filters' => [['p' => '3', 'q' => 'tee'], false, false],
             'value order' => [['color' => 'blue,red'], true, false],
-            'parameter order' => [['size' => 'm', 'color' => 'red'], true, false],
+            // Magento's Varnish configuration sorts query parameters, so their order alone must never redirect (a loop).
+            'parameter order' => [['size' => 'm', 'color' => 'red'], false, false],
+            'parameter order with a value to normalise' => [['size' => 'M', 'color' => 'red'], true, false],
             'upper case' => [['color' => 'RED'], true, false],
             'option id' => [['color' => '50'], true, false],
             'array syntax' => [['color' => ['red', 'blue']], true, false],

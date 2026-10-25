@@ -43,7 +43,7 @@ class NormalizationTest extends AbstractController
 
         return [
             'value order' => [[$color => 'blue,red', 'p' => '2'], "?$color=red,blue&p=2"],
-            'parameter order, sort kept' => [[$size => 'm', 'product_list_order' => 'name', $color => 'red'], "?$color=red&$size=m&product_list_order=name"],
+            'parameter order and a value, sort kept' => [[$size => 'M', 'product_list_order' => 'name', $color => 'red'], "?$color=red&$size=m&product_list_order=name"],
             'upper case' => [[$color => 'RED'], "?$color=red"],
             'junk resets the page' => [[$color => 'red,nonsense', 'p' => '3'], "?$color=red"],
             'only junk' => [[$color => 'nonsense'], ''],
@@ -68,6 +68,18 @@ class NormalizationTest extends AbstractController
         self::assertSame(301, $this->getResponse()->getHttpResponseCode());
         $location = (string) $this->getResponse()->getHeader('Location')->getFieldValue();
         self::assertStringEndsWith('catalog/category/view/id/' . self::$catalog['category'] . '/' . $expectedQuery, $location);
+    }
+
+    /**
+     * Magento's Varnish configuration sorts query parameters before Magento sees them: a redirect to the filters' own
+     * order would come back sorted and loop, so the order alone never redirects (the canonical tag names one URL).
+     */
+    public function testTheParameterOrderAloneDoesNotRedirect(): void
+    {
+        $this->getRequest()->setMethod('GET')->setQueryValue([M1Catalog::SIZE => 'm', M1Catalog::COLOR => 'red']);
+        $this->dispatch('catalog/category/view/id/' . self::$catalog['category']);
+
+        self::assertSame(200, $this->getResponse()->getHttpResponseCode());
     }
 
     public function testOptionIdsBecomeUrlNames(): void

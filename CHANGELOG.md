@@ -2,6 +2,12 @@
 
 All notable changes to this project are documented here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses [Semantic Versioning](https://semver.org/): `Api/` interfaces, the filter URL format, the storefront markup contract (`docs/storefront.md`) and the CLI JSON format change only in a major version.
 
+## [1.1.1] - 2026-10-25
+
+### Fixed
+- Filter URLs with their parameters in another order than the filters' no longer redirect (301). Magento's Varnish configuration sorts query parameters alphabetically before Magento sees them, so on stores behind it the redirect came back sorted and looped ("too many redirects") whenever the filter order was not alphabetical, for example after *Sort filters*. The canonical tag still names one URL.
+- The desktop apply bar (*When results update on desktop* = button) had no background, border or button colour: it is moved to the end of the page, outside the elements that define OpenFilter's colours, so products showed through it and *Show N products* was white on nothing.
+
 ## [1.1.0] - 2026-10-16
 
 No changes since 1.1.0-rc1.
