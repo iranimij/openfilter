@@ -102,6 +102,14 @@
                 </li>
               </ul>
               <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../migration/">Moving from another filter module</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../insights/">Insights</a>
+                </li>
+              </ul>
+              <ul>
                 <li class="toctree-l1"><a class="reference internal" href="../upgrade-uninstall/">Upgrade and uninstall</a>
                 </li>
               </ul>
@@ -151,6 +159,8 @@
 <li><strong>Sliders</strong> (price, decimal attributes): bounds come from the same search request, ignore the slider's own range, and follow the customer group's prices; price bounds are shown in the display currency and tax display (default product tax class).</li>
 <li><strong>Ranges (1.1)</strong> (price, decimal attributes, display type <em>Ranges</em>): a list such as €0.00–€39.99, €40.00–€59.99, €60.00 and above. A range includes its lower bound and stops before the upper one. Your own list (<code>0-40,40-60,60-</code>) or automatic ranges: about five, with round bounds (steps of 1, 2 or 5 × 10ⁿ) in the currency shoppers see. With "Shoppers can pick several values" on, picked ranges combine with <em>any of</em> (<code>?price=0-40,60-</code>). Counts come from the same search request and ignore the price pick, like every other filter.</li>
 <li><strong>Category: drill-down or tree (1.1).</strong> <em>Checkbox list</em> is Magento's drill-down (a link leaves for the subcategory). <em>Category tree</em> lists the categories below the page's category (the store's root on search pages) down to 1–5 levels with counts; picking one narrows the same page (<code>?cat=21</code>), several combine with <em>any of</em> (<code>?cat=21,25</code>) when "Shoppers can pick several values" is on. Counts come from the same search request and ignore the category picks. The tree is read from OpenFilter's cache (rebuilt when a category is saved, moved or deleted), so the page needs fewer SQL queries than Magento's drill-down.</li>
+<li><strong>Option images (1.2)</strong>: for attributes without swatches (material, brand, style), the display type <em>Images</em> shows an image you upload per option in the filter form's <em>Option images</em> section, with the label and count next to it, like a swatch. Options without an image show their label. Images are the same in every store view, stored below <code>pub/media/openfilter/options</code> (JPG, PNG, GIF or WebP, up to 2 MB), read from OpenFilter's cache on the storefront and reported as <code>swatch { type: "image" }</code> in GraphQL.</li>
+<li><strong>Dependent filters (1.2)</strong>: a filter can wait for a pick in another filter (<em>Where it shows › Show only after a pick in</em>), for example <em>Size</em> only after a <em>Clothing type</em> is picked, or <em>Heel height</em> only after <em>Shoes</em>. Optionally only for some of that filter's values. Until then the filter is not on the page, in GraphQL <code>openfilter_aggregations</code> or in the XML sitemap. Removing the parent's pick removes the dependent filter's picks too (also down a chain), so its URLs never keep picks of a filter that is not shown; old links with such picks redirect (301) to the page without them. Counts and the one search request are unchanged.</li>
 <li><strong>Built-in filters</strong>: rating ("N stars and up"), in stock (only when out-of-stock products are displayed), on sale (per customer group and website), new ("Set Product as New" window, evaluated at request time). See <a href="../index-fields/">Index fields</a>.</li>
 </ul>
 <h2 id="coexistence">Coexistence<a class="headerlink" href="#coexistence" title="Permanent link">&para;</a></h2>

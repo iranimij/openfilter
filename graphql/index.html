@@ -72,6 +72,10 @@
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#what-you-get">What you get</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#landing-pages-12">Landing pages (1.2)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#insights-12">Insights (1.2)</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#good-to-know">Good to know</a>
     </li>
     </ul>
@@ -95,6 +99,14 @@
               </ul>
               <ul>
                 <li class="toctree-l1"><a class="reference internal" href="../coexistence/">Other search modules</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../migration/">Moving from another filter module</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../insights/">Insights</a>
                 </li>
               </ul>
               <ul>
@@ -161,6 +173,12 @@
 <li><strong>Swatches:</strong> <code>swatch.type</code> <code>color</code> (value <code>#hex</code>), <code>image</code> (value a URL) or <code>text</code>.</li>
 </ul>
 <p>Everything comes from the same search request as the products: with the <em>single query</em> strategy OpenFilter adds no request to Magento's own (measured in the integration tests).</p>
+<h2 id="landing-pages-12">Landing pages (1.2)<a class="headerlink" href="#landing-pages-12" title="Permanent link">&para;</a></h2>
+<p><code>openfilter_landing_page(url_key: "black-tops")</code> returns an enabled <a href="../storefront/#landing-pages-12">landing page</a> of the store view (<code>Store</code> header), or null: <code>url</code>, <code>title</code>, <code>heading</code>, <code>meta_title</code>, <code>meta_description</code>, <code>description</code> (HTML with widgets and variables rendered), <code>robots</code>, <code>category_uid</code> and <code>filters { code values }</code>. Query <code>products</code> with that <code>category_uid</code> and the filters (<code>code: { in: values }</code>, ranges as <code>from</code>–<code>to</code>) to list its products:</p>
+<pre><code class="language-graphql">{ openfilter_landing_page(url_key: &quot;black-tops&quot;) { heading description category_uid filters { code values } } }
+</code></pre>
+<h2 id="insights-12">Insights (1.2)<a class="headerlink" href="#insights-12" title="Permanent link">&para;</a></h2>
+<p>Where <a href="../insights/">insights</a> are on, a headless storefront can report filter use with the same beacon as the Hyvä storefront: <code>POST /openfilter/insights/collect</code> with <code>{"s": store code, "c": category ID, "f": {code: [value, …]}, "b": bucket}</code>, keys from <code>openfilter_aggregations { code }</code> and values from <code>options { value }</code>. See <a href="../insights/#headless-storefronts">Insights › Headless storefronts</a>.</p>
 <h2 id="good-to-know">Good to know<a class="headerlink" href="#good-to-know" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Prices and ranges are in the units of Magento's <code>price</code> filter (the price index), not converted to the display currency.</li>

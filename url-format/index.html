@@ -66,6 +66,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#canonical-urls-301">Canonical URLs (301)</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#path-urls-12-opt-in">Path URLs (1.2, opt-in)</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#reading-and-writing-urls-in-code">Reading and writing URLs in code</a>
     </li>
     </ul>
@@ -97,6 +99,14 @@
               </ul>
               <ul>
                 <li class="toctree-l1"><a class="reference internal" href="../coexistence/">Other search modules</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../migration/">Moving from another filter module</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../insights/">Insights</a>
                 </li>
               </ul>
               <ul>
@@ -183,8 +193,20 @@
 <h2 id="canonical-urls-301">Canonical URLs (301)<a class="headerlink" href="#canonical-urls-301" title="Permanent link">&para;</a></h2>
 <p>Every filter URL has one canonical form: filters in position order, values in option order, URL names, lower case, no duplicates or unknown values. Category and search pages answer other forms with a <strong>301</strong> to the canonical URL, except when only the order of the parameters differs (Magento's Varnish configuration sorts query parameters before Magento sees them, so a redirect for the order would loop; the canonical tag names the one URL); sort order, limit and view mode stay, the page number resets only when values were dropped. Other parameters (tracking, for example) may sit anywhere. POST requests are never redirected.</p>
 <p>Links OpenFilter renders are canonical already, so shoppers and crawlers never hit the redirect; it catches hand-written, old and external links and keeps one cache entry per filtered page.</p>
+<h2 id="path-urls-12-opt-in">Path URLs (1.2, opt-in)<a class="headerlink" href="#path-urls-12-opt-in" title="Permanent link">&para;</a></h2>
+<p><em>Stores › Configuration › OpenFilter › SEO › Filter URLs on category pages</em> = <em>Paths</em> writes the filters of category pages as path segments instead of query parameters:</p>
+<pre><code>/women/tops-women.html?color=black,blue&amp;size=m   →   /women/tops-women/color-black,blue/size-m.html
+</code></pre>
+<ul>
+<li>One segment per filter, <code>&lt;URL name of the filter&gt;-&lt;values&gt;</code>, values comma-separated as in the query format, filters in position order, then the category URL suffix. Ranges keep their format: <code>price-10-50</code>, <code>price--50</code>, <code>price-100-</code>.</li>
+<li>Page number, sort order and view mode stay in the query: <code>/women/tops-women/color-black.html?p=2</code>.</li>
+<li>A filter whose segment could read as another filter (a URL name that starts with another one plus a dash) stays in the query, so every URL reads back to the same filters.</li>
+<li>Query links (old links, the no-JavaScript slider and dropdown forms) and segments in another order answer with a <strong>301</strong> to the canonical path. Switching back to query parameters redirects path links the same way.</li>
+<li>Search result pages and the All Products page keep query parameters; category URLs without a URL rewrite (<code>catalog/category/view/id/12</code>) too.</li>
+<li>The path is resolved before Magento's URL rewrite router, from cached settings: no extra SQL query, one search request as before. Canonical tags, the XML sitemap and every link follow the format.</li>
+</ul>
 <h2 id="reading-and-writing-urls-in-code">Reading and writing URLs in code<a class="headerlink" href="#reading-and-writing-urls-in-code" title="Permanent link">&para;</a></h2>
-<p><code>Iranimij\OpenFilter\Api\UrlCodecInterface</code> turns parameters into an <code>Api\FilterStateInterface</code> (<code>decode</code>) and back (<code>encode</code>, <code>urlFor</code>). Unknown parameters are ignored, values are checked against the attribute's options, numbers are clamped (price ≥ 0, ≤ 10⁹; rating 1–5).</p>
+<p><code>Iranimij\OpenFilter\Api\UrlCodecInterface</code> turns parameters into an <code>Api\FilterStateInterface</code> (<code>decode</code>) and back (<code>encode</code>, <code>urlFor</code>; the query format). <code>Model\Url\PathUrl</code> builds and reads the path format. Unknown parameters are ignored, values are checked against the attribute's options, numbers are clamped (price ≥ 0, ≤ 10⁹; rating 1–5).</p>
               
             </div>
           </div><footer>

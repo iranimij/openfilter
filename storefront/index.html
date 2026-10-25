@@ -64,6 +64,14 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#layouts-and-apply-mode-11">Layouts and apply mode (1.1)</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#all-products-page-12">All Products page (1.2)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#landing-pages-12">Landing pages (1.2)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#more-products-12">More products (1.2)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#quick-filter-bar-12">Quick filter bar (1.2)</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#phones">Phones</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#without-javascript">Without JavaScript</a>
@@ -115,6 +123,14 @@
               </ul>
               <ul>
                 <li class="toctree-l1"><a class="reference internal" href="../coexistence/">Other search modules</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../migration/">Moving from another filter module</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../insights/">Insights</a>
                 </li>
               </ul>
               <ul>
@@ -183,6 +199,15 @@
 <li><strong>Dropdown</strong> (per filter) is a native select in a GET form: without JavaScript its button sends it, with JavaScript a change loads the result in place.</li>
 </ul>
 <p>These parts load a small extra script (<code>js/extras.phtml</code>, under 1.5 KB gzipped) only on store views that use one of them; the default page keeps the 6 KB budget.</p>
+<h2 id="all-products-page-12">All Products page (1.2)<a class="headerlink" href="#all-products-page-12" title="Permanent link">&para;</a></h2>
+<p>With <em>Stores › Configuration › OpenFilter › All Products page › Show the All Products page</em> on, every product of the store view is listed with the filters at the URL key you choose (default <code>all-products</code>, also <code>shop/all.html</code> style). The page is the store's root category on Magento's category page, so the theme's category templates, OpenFilter's Hyvä templates, AJAX, robots and canonical rules and the SEO templates work as on any category page; it has its own title and H1 (<em>Page title and heading</em>), its URL as canonical, and an entry in the XML sitemap. The root category must be an anchor category (Magento's default root is). A page that already has the URL key (a category, a CMS page) keeps it.</p>
+<h2 id="landing-pages-12">Landing pages (1.2)<a class="headerlink" href="#landing-pages-12" title="Permanent link">&para;</a></h2>
+<p>A landing page is a category with fixed filters at its own address, for example <code>/black-tops</code> for <em>Women › Tops</em> with <em>Color: Black</em>, with its own title, H1, meta description, robots value and a text above the products (<em>Catalog › OpenFilter › Landing pages</em>, see <a href="../admin/#landing-pages-12">Admin</a>). It is that category's page with those filters picked: the same templates, counts, chips, AJAX and toolbar, so shoppers can narrow it further; the other filter links start from the category's URL. The text is HTML with widgets and variables, as in CMS blocks.</p>
+<p>Filter links that lead to exactly a landing page's filters on its category (in any order) go to the landing page instead, and the filtered category page names it as canonical (see <a href="../seo/#landing-pages-12">SEO</a>). A URL key that a category, product or CMS page already has is refused when saving; disabled pages and pages of other store views are not found (404). The pages are read from the <em>OpenFilter</em> cache: no SQL query on the storefront.</p>
+<h2 id="more-products-12">More products (1.2)<a class="headerlink" href="#more-products-12" title="Permanent link">&para;</a></h2>
+<p><em>Stores › Configuration › OpenFilter › Display › More products</em> chooses how shoppers see the next products: Magento's page links (default), a <strong>Load more products</strong> button after the list, or loading <strong>as shoppers scroll</strong> (two pages load on their own, then the button waits, so the page footer stays reachable). The button fetches the pager's next page (the same URL as the page link, so Varnish serves it), adds its products to the list, runs their scripts and takes over its pager; the live region announces how many products were added and the keyboard moves to the first new one. The page links stay for search engines and without JavaScript, the address does not change, and Back from a product loads the same pages again. The script (about 1.1 KB) is printed only on store views that use it.</p>
+<h2 id="quick-filter-bar-12">Quick filter bar (1.2)<a class="headerlink" href="#quick-filter-bar-12" title="Permanent link">&para;</a></h2>
+<p>With <em>Stores › Configuration › OpenFilter › Display › Quick filter bar above the products</em> above 0, the values of the filters marked <em>In the quick filter bar</em> (filter form › How it behaves) show as one-click links above the products: picked values first, then the values with the most products, up to that number. They are ordinary filter links (they work without JavaScript and swap with it), with the filter's name for screen readers; on phones the row scrolls sideways. The bar is built from the page's own filters: no extra search request.</p>
 <h2 id="phones">Phones<a class="headerlink" href="#phones" title="Permanent link">&para;</a></h2>
 <p>Below 768 px the filters move into a drawer, opened by a sticky <strong>Filter (N)</strong> button above the results (N counts the active values).</p>
 <ul>
@@ -279,6 +304,18 @@
 <tr>
 <td>Desktop apply bar (1.1)</td>
 <td><code>[data-of-apply-bar]</code> with <code>[data-of-apply-show]</code> and <code>[data-of-apply-reset]</code></td>
+</tr>
+<tr>
+<td>More products (1.2)</td>
+<td><code>button.of-more-products</code> after the product list; settings in <code>#of-more-config[data-mode]</code></td>
+</tr>
+<tr>
+<td>Quick filter bar (1.2)</td>
+<td><code>nav.of-quick</code> with <code>a.of-quick__link[data-of-link]</code> (<code>.of-quick__link--selected</code>, <code>aria-current</code>) at the top of <code>#of-state</code></td>
+</tr>
+<tr>
+<td>Option images (1.2)</td>
+<td>the <em>Images</em> display type uses the swatch markup (<code>a.of-swatch</code> with <code>img.of-swatch__visual</code>)</td>
 </tr>
 </tbody>
 </table>

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://iranimij.github.io/openfilter/insights/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Insights - OpenFilter</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Insights";
+        var mkdocs_page_input_path = "insights.md";
+        var mkdocs_page_url = "/openfilter/insights/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> OpenFilter
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../install/">Install</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../filters/">Filters</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../admin/">Admin</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../storefront/">Storefront</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../url-format/">Filter URLs</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../seo/">SEO rules</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../graphql/">GraphQL (headless)</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../benchmark/">Benchmark</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cli/">Command line</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../import-export/">Import and export</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/">Troubleshooting</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../coexistence/">Other search modules</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../migration/">Moving from another filter module</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Insights</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#turn-it-on">Turn it on</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#the-insights-page">The Insights page</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#what-is-sent">What is sent</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#headless-storefronts">Headless storefronts</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#privacy">Privacy</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../upgrade-uninstall/">Upgrade and uninstall</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Developers</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../hyva-integration/">Hyvä integration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../facet-counts/">Facet counts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../index-fields/">Index fields</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">OpenFilter</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Insights</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/iranimij/openfilter/edit/main/docs/insights.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="insights-12">Insights (1.2)<a class="headerlink" href="#insights-12" title="Permanent link">&para;</a></h1>
+<p>Insights show what shoppers do with your filters: which filters and values they use, which filters nobody uses, which filter combinations find no products, which filters are worth letting search engines index, and a filter order by use. They are off by default.</p>
+<h2 id="turn-it-on">Turn it on<a class="headerlink" href="#turn-it-on" title="Permanent link">&para;</a></h2>
+<p><em>Stores › Configuration › OpenFilter › Insights</em>:</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Path</th>
+<th>Default</th>
+<th>Scope</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Collect filter insights</td>
+<td><code>openfilter/insights/enabled</code></td>
+<td>No</td>
+<td>store view</td>
+</tr>
+<tr>
+<td>Keep the counts for this many days</td>
+<td><code>openfilter/insights/retention_days</code></td>
+<td>90</td>
+<td>global</td>
+</tr>
+</tbody>
+</table>
+<p>With it on, filter pages (category pages, search results, landing pages, the All Products page) send a small report after they load and after each filter change. A cron job (<code>openfilter_insights_purge</code>, nightly) deletes the days older than the retention, whether insights are on or off, so Magento's cron must run.</p>
+<h2 id="the-insights-page">The Insights page<a class="headerlink" href="#the-insights-page" title="Permanent link">&para;</a></h2>
+<p><em>Catalog › OpenFilter › Insights</em> (ACL <em>Insights</em>). Pick a store view and a period (7, 30 or 90 days).</p>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>What it shows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Most used filters</td>
+<td>Filters by the pages they were used on, and their share of all filter pages viewed</td>
+</tr>
+<tr>
+<td>Most used values</td>
+<td>The 20 values picked most, with their store view labels</td>
+</tr>
+<tr>
+<td>Filters nobody used</td>
+<td>Active filters no page used in the period: hide them or move them down</td>
+</tr>
+<tr>
+<td>Filter combinations without products</td>
+<td>The 20 combinations shoppers asked for that found nothing: products to stock or tag</td>
+</tr>
+<tr>
+<td>Filters worth letting search engines index</td>
+<td>Option filters used on at least 10 % of the pages (and at least 20 times) that are not marked <em>Let Google index pages filtered by this</em></td>
+</tr>
+<tr>
+<td>Suggested filter order</td>
+<td>Active filters by use, most used first; hidden filters keep their place at the end</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Apply to Sort filters</strong> opens <em>Sort filters</em> with the suggested order. Nothing is saved until you click <strong>Save order</strong> there. Below 50 page views the page says there is not enough data yet.</p>
+<h2 id="what-is-sent">What is sent<a class="headerlink" href="#what-is-sent" title="Permanent link">&para;</a></h2>
+<p>One JSON body per page load and per filter change, sent with <code>navigator.sendBeacon</code> to <code>POST /openfilter/insights/collect</code> of the store view:</p>
+<pre><code class="language-json">{&quot;s&quot;: &quot;default&quot;, &quot;c&quot;: 21, &quot;f&quot;: {&quot;color&quot;: [&quot;49&quot;, &quot;50&quot;], &quot;price&quot;: [&quot;20-50&quot;]}, &quot;b&quot;: 2}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>s</code></td>
+<td>Store view code; it must be the store view the request reaches</td>
+</tr>
+<tr>
+<td><code>c</code></td>
+<td>Category ID, <code>0</code> on search results</td>
+</tr>
+<tr>
+<td><code>f</code></td>
+<td>Active filters: filter key (attribute code, <code>price</code>, <code>rating</code>, <code>stock</code>, <code>sale</code>, <code>new</code>, <code>category</code>) and values (option IDs, ranges <code>from-to</code>, <code>1</code> for on/off filters, category IDs)</td>
+</tr>
+<tr>
+<td><code>b</code></td>
+<td>Products found, as a bucket: <code>0</code> none, <code>1</code> 1–10, <code>2</code> 11–100, <code>3</code> more, <code>-1</code> unknown</td>
+</tr>
+</tbody>
+</table>
+<p>The endpoint answers <code>204</code> when it counted the beacon, <code>400</code> when anything does not match the store view (an unknown or inactive filter, a value no filter link could carry, more than 20 values, a body over 4 KB, another store view's code) and <code>404</code> where insights are off. It needs no form key, so pages from the full page cache can send it.</p>
+<p>Counts are added per day, store view, category, filter and value: one view, one count per filter, one per value (ranges count only as their filter) and, for a page without products, its filter combination. There is no row per request.</p>
+<h2 id="headless-storefronts">Headless storefronts<a class="headerlink" href="#headless-storefronts" title="Permanent link">&para;</a></h2>
+<p>A headless storefront can send the same beacon: POST the JSON above to <code>https://&lt;store&gt;/openfilter/insights/collect</code> (with <code>___store=&lt;code&gt;</code> where the store view is not in the address), after each products query with filters. Take the keys from <code>openfilter_aggregations { code }</code> and the values from <code>options { value }</code> (<a href="../graphql/">GraphQL</a>); ranges as <code>from-to</code>. Send it only when insights are on for the store view; a <code>404</code> means they are off.</p>
+<h2 id="privacy">Privacy<a class="headerlink" href="#privacy" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Nothing about the shopper is sent or stored: no cookie, no customer or session ID, no IP address, no user agent, no referrer, no time of day (only the day).</li>
+<li>The script reads only the page (<code>#of-state</code> and the product count) and sets no cookie or storage of its own. The endpoint reads only the body.</li>
+<li>Browsers send the cookies of the shop with any request to it, as with every other request of the page; OpenFilter does not read them, and Magento's visitor log skips the OpenFilter route.</li>
+<li>Counts cannot be traced back to a person, so no consent banner entry is needed for them under the usual reading of the GDPR; check with your own advisor if in doubt.</li>
+<li>Anyone can post a beacon, as anyone can load your pages: values are checked against your filters, so made-up values are refused, but counts can be inflated by bots that run JavaScript.</li>
+<li><code>bin/magento module:uninstall Iranimij_OpenFilter</code> drops the table <code>openfilter_insight_daily</code>.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../migration/" class="btn btn-neutral float-left" title="Moving from another filter module"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../upgrade-uninstall/" class="btn btn-neutral float-right" title="Upgrade and uninstall">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/iranimij/openfilter" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../migration/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../upgrade-uninstall/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

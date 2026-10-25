@@ -82,6 +82,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#openfilterslugsgenerate">openfilter:slugs:generate</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#openfiltermigrate">openfilter:migrate</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#openfilterconfigexport-import">openfilter:config:export / import</a>
     </li>
     </ul>
@@ -97,6 +99,14 @@
               </ul>
               <ul>
                 <li class="toctree-l1"><a class="reference internal" href="../coexistence/">Other search modules</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../migration/">Moving from another filter module</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../insights/">Insights</a>
                 </li>
               </ul>
               <ul>
@@ -176,6 +186,34 @@ bin/magento openfilter:slugs:generate -a color      # one attribute
 bin/magento openfilter:slugs:generate --overwrite   # every name again from the labels
 </code></pre>
 <p>Without <code>--overwrite</code>, existing URL names never change: published filter URLs keep working. Use it after importing options outside the admin (new options saved in the admin get a name on save). <code>--overwrite</code> regenerates every name from the current labels; old URLs then answer through the option-id fallback only if they used ids.</p>
+<h2 id="openfiltermigrate">openfilter:migrate<a class="headerlink" href="#openfiltermigrate" title="Permanent link">&para;</a></h2>
+<p>Moving from another layered navigation module (<a href="../migration/">guide</a>): lists the other filter modules still enabled and the command to switch them off, the number of filters OpenFilter took over, and whether old filter URLs redirect.</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--store=&lt;code&gt;</code></td>
+<td>the store view to report on and to change (default: the default store view; without it, <code>--redirects</code> and <code>--filter-keys</code> change the default scope)</td>
+</tr>
+<tr>
+<td><code>--redirects=on\|off</code></td>
+<td>turn the redirects of old filter URLs on or off</td>
+</tr>
+<tr>
+<td><code>--filter-keys=shopby,…</code></td>
+<td>path parts of the old URLs before the filters</td>
+</tr>
+<tr>
+<td><code>--urls=&lt;file&gt;</code></td>
+<td>a file of old URLs, one per line: shows where each one would redirect (changes nothing)</td>
+</tr>
+</tbody>
+</table>
 <h2 id="openfilterconfigexport-import">openfilter:config:export / import<a class="headerlink" href="#openfilterconfigexport-import" title="Permanent link">&para;</a></h2>
 <p>See <a href="../import-export/">Import and export</a>.</p>
               

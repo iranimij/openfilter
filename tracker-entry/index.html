@@ -92,6 +92,14 @@
                 </li>
               </ul>
               <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../migration/">Moving from another filter module</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../insights/">Insights</a>
+                </li>
+              </ul>
+              <ul>
                 <li class="toctree-l1"><a class="reference internal" href="../upgrade-uninstall/">Upgrade and uninstall</a>
                 </li>
               </ul>
@@ -129,8 +137,8 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="hyva-compatibility-tracker-entry-draft">Hyvä compatibility tracker entry (draft)<a class="headerlink" href="#hyva-compatibility-tracker-entry-draft" title="Permanent link">&para;</a></h1>
-<p>Draft for the Hyvä compatibility tracker (submitted by Iman after the 1.0.0 release). Not linked from the
-documentation navigation.</p>
+<p>Draft for the Hyvä compatibility tracker (submitted by Iman after the 1.0.0 release; updated for 1.2). Not linked
+from the documentation navigation.</p>
 <table>
 <thead>
 <tr>
@@ -177,16 +185,17 @@ documentation navigation.</p>
 </tr>
 <tr>
 <td>Notes</td>
-<td>Replaces the layered navigation templates on category and search pages with its own (filter groups as native disclosures, real links underneath); one Alpine component registered with the CSP helper (no inline handlers, no <code>eval</code>, no inline styles), works with Alpine's CSP build; AJAX fetches the same URL as a normal page load, so Varnish and the built-in page cache serve filter clicks; no Tailwind build needed (one static stylesheet, theme tokens through CSS custom properties); right-to-left stores mirror; steps aside when ElasticSuite or Adobe Live Search provides the layered navigation</td>
+<td>Replaces the layered navigation templates on category and search pages with its own (filter groups as native disclosures, real links underneath); one Alpine component registered with the CSP helper (no inline handlers, no <code>eval</code>, no inline styles), works with Alpine's CSP build; optional parts (apply bar, horizontal bar, "Load more" and infinite scroll, insights beacon) are small static scripts printed only where they are switched on; AJAX fetches the same URL as a normal page load, so Varnish and the built-in page cache serve filter clicks; no Tailwind build needed (one static stylesheet, theme tokens through CSS custom properties); right-to-left stores mirror; steps aside when ElasticSuite or Adobe Live Search provides the layered navigation</td>
 </tr>
 </tbody>
 </table>
 <h2 id="short-description">Short description<a class="headerlink" href="#short-description" title="Permanent link">&para;</a></h2>
 <p>Free layered navigation for Magento 2 and Hyvä on the OpenSearch Magento ships: multi-select filters with correct
 counts in one search request, AJAX that the page cache serves and Hyvä's CSP allows, price and decimal sliders,
-rating / in stock / on sale / new filters, a mobile drawer with "Show N products", SEO rules (readable URLs,
-canonical, robots, nofollow, a limit on combined values) and an admin with diagnostics. Every filter works without
-JavaScript.</p>
+rating / in stock / on sale / new filters, a mobile drawer with "Show N products", SEO rules (readable query or
+path URLs, canonical, robots, nofollow, a limit on combined values, landing pages, an XML sitemap), "Load more" and
+infinite scroll, a quick filter bar, option images, anonymous insights and an admin with diagnostics. Every filter
+works without JavaScript.</p>
               
             </div>
           </div><footer>

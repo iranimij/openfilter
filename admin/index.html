@@ -56,6 +56,8 @@
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#first-run">First run</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#set-up-openfilter-12">Set up OpenFilter (1.2)</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#filters-grid">Filters grid</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#sort-filters-11">Sort filters (1.1)</a>
@@ -69,6 +71,10 @@
         </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#attribute-page">Attribute page</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#landing-pages-12">Landing pages (1.2)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#insights-12">Insights (1.2)</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#why-is-this-filter-not-showing">Why is this filter not showing?</a>
     </li>
@@ -114,6 +120,14 @@
                 </li>
               </ul>
               <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../migration/">Moving from another filter module</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../insights/">Insights</a>
+                </li>
+              </ul>
+              <ul>
                 <li class="toctree-l1"><a class="reference internal" href="../upgrade-uninstall/">Upgrade and uninstall</a>
                 </li>
               </ul>
@@ -154,6 +168,9 @@
 <p>Everything lives under <strong>Catalog › OpenFilter</strong>: <strong>Filters</strong> (one list of attribute filters and built-in filters) and <strong>Settings</strong> (Stores › Configuration › Iranimij › OpenFilter). Access is controlled by the ACL resources <em>Catalog › OpenFilter › Filters</em> and <em>Stores › Settings › Configuration › Iranimij › OpenFilter</em>.</p>
 <h2 id="first-run">First run<a class="headerlink" href="#first-run" title="Permanent link">&para;</a></h2>
 <p>After installing, the admin shows a notice: how many filterable attributes OpenFilter found and which defaults it set (colours as swatches, sizes as text swatches, price as a slider, other lists as checkbox lists, Yes/No attributes as switches). Rating, In stock, On sale and New start switched off. <strong>Review defaults</strong> opens the Filters grid and dismisses the notice.</p>
+<h2 id="set-up-openfilter-12">Set up OpenFilter (1.2)<a class="headerlink" href="#set-up-openfilter-12" title="Permanent link">&para;</a></h2>
+<p>Above the Filters grid a checklist shows five steps and whether each is done, with a link to where it is done: review which filters show (the first-run notice's <em>Review defaults</em>), put them in order (<em>Sort filters</em>), choose where filters show (<em>Settings › Display</em>), set the search engine rules (<em>Settings › SEO</em>), keep the OpenFilter and full page caches on. The states come from what was saved, so nothing is ticked by hand; <strong>Hide this list</strong> hides it for every admin user.</p>
+<p>A new install of 1.2 also starts with a useful order: category, price, the filters with swatches, then the other filters, each group in Magento's attribute order (written as sort positions, as <em>Sort filters</em> saves them). Shops that installed an earlier version keep their order.</p>
 <h2 id="filters-grid">Filters grid<a class="headerlink" href="#filters-grid" title="Permanent link">&para;</a></h2>
 <p>One row per filter: label, code, type (attribute or built-in), how it looks, several values, options before "Show more", search box threshold, "Google may index", order (its place on the storefront: 1, 2, 3 …), position (the number behind the order), products must match (any / all), where it shows, storefront (shown or hidden).</p>
 <p>Above the grid, warnings name what shoppers would trip over: two active filters with the same name (rename one in <em>Label and tooltip</em>, or hide one), and search result pages without attribute filters.</p>
@@ -183,11 +200,15 @@
 </tr>
 <tr>
 <td>How it behaves</td>
-<td>show on the storefront, several values, <strong>Products must match</strong> (option filters, 1.1): <em>any</em> of the picked values (more products) or <em>all</em> of them (fewer products, for features a product has several of), options before "Show more" (0 = all), search box from N options (0 = never), open when the page loads (automatic / open / closed), option order, hide when only one option is left, position (empty = the attribute's position)</td>
+<td>show on the storefront, several values, <strong>Products must match</strong> (option filters, 1.1): <em>any</em> of the picked values (more products) or <em>all</em> of them (fewer products, for features a product has several of), options before "Show more" (0 = all), search box from N options (0 = never), open when the page loads (automatic / open / closed), option order, hide when only one option is left, <strong>In the quick filter bar</strong> (1.2: its values may appear as links above the products), position (empty = the attribute's position)</td>
 </tr>
 <tr>
 <td>Where it shows (1.1)</td>
-<td><em>In every category</em> (default), <em>Only in these categories</em> or <em>In every category except these</em>, with Magento's category picker; a category counts with the categories below it; search result pages always show the filter</td>
+<td><em>In every category</em> (default), <em>Only in these categories</em> or <em>In every category except these</em>, with Magento's category picker; a category counts with the categories below it; search result pages always show the filter. <strong>Show only after a pick in</strong> (1.2): another filter this one waits for, and optionally <strong>Only for these values</strong> of it (empty = any value); filters that would wait for each other are refused</td>
+</tr>
+<tr>
+<td>Option images (1.2)</td>
+<td>an image per option for the <em>Images</em> display type (attributes with a list of options; edited with <em>All Store Views</em>); remove an image to show the label again</td>
 </tr>
 <tr>
 <td>SEO</td>
@@ -219,8 +240,14 @@
 <h2 id="attribute-page">Attribute page<a class="headerlink" href="#attribute-page" title="Permanent link">&para;</a></h2>
 <p>Stores › Attributes › Product › <em>attribute</em> › <strong>Storefront Properties</strong> has an <strong>OpenFilter</strong> fieldset for attributes that are filters: how it looks, several values, options before "Show more", search box threshold, URL name, "Let Google index". It is saved with the attribute (an invalid value stops the save). A link opens the full filter form for labels, option URL names and position.</p>
 <p>Saving any product attribute refreshes OpenFilter's cache, so an attribute that becomes filterable appears on the storefront without a cache flush.</p>
+<h2 id="landing-pages-12">Landing pages (1.2)<a class="headerlink" href="#landing-pages-12" title="Permanent link">&para;</a></h2>
+<p><em>Catalog › OpenFilter › Landing pages</em> (ACL <em>Landing pages</em>) lists the pages with their URL key, category, number of filters, store views, robots value and status; mass action <em>Delete</em>.</p>
+<p>To make one, open the category on the storefront, pick the filters, copy the address and paste it into <strong>Filtered category page</strong>: OpenFilter reads the category and the filters from it (query or path URLs, the URL names of the page's first store view). When editing, the field shows the page's category and filters now; leave it empty to keep them. <strong>URL key</strong> is the address after the store's base URL (<code>black-tops</code>, <code>women/black-tops.html</code>); it must not be taken by a category, product or CMS page or by another landing page of the same store views. <strong>Heading</strong> and <strong>Meta title</strong> default to the title; <strong>Text above the products</strong> is HTML with widgets and variables.</p>
+<p>Saving cleans the <em>OpenFilter</em> cache and marks the full page cache invalid, as filter settings do.</p>
+<h2 id="insights-12">Insights (1.2)<a class="headerlink" href="#insights-12" title="Permanent link">&para;</a></h2>
+<p><em>Catalog › OpenFilter › Insights</em> (ACL <em>Insights</em>) shows what shoppers do with the filters of one store view: see <a href="../insights/">Insights</a>. <strong>Apply to Sort filters</strong> opens <em>Sort filters</em> with the order by use, to check and save.</p>
 <h2 id="why-is-this-filter-not-showing">Why is this filter not showing?<a class="headerlink" href="#why-is-this-filter-not-showing" title="Permanent link">&para;</a></h2>
-<p>Each line is a condition the filter needs, with what was found and how to fix it. The first problem is usually the answer.</p>
+<p>The panel opens with one line (1.2): that the filter shows, or the first problem and its fix ("Not showing on search result pages" when only search pages miss it). <strong>All N checks</strong> unfolds every condition the filter needs, with what was found and how to fix it. The first problem is usually the answer.</p>
 <table>
 <thead>
 <tr>
@@ -333,6 +360,36 @@
 <td>Keep the sidebar in view while scrolling (1.1)</td>
 <td><code>openfilter/display/sticky</code></td>
 <td>No</td>
+<td>store view</td>
+</tr>
+<tr>
+<td>More products (1.2)</td>
+<td><code>openfilter/display/pagination</code></td>
+<td>Page links (Magento's pager); or a "Load more" button, or as shoppers scroll</td>
+<td>store view</td>
+</tr>
+<tr>
+<td>Quick filter bar above the products: values shown (1.2)</td>
+<td><code>openfilter/display/quick_bar_size</code></td>
+<td>0 (no bar)</td>
+<td>store view</td>
+</tr>
+<tr>
+<td>All Products page (1.2): on, URL key, title</td>
+<td><code>openfilter/all_products/enabled</code>, <code>url_key</code>, <code>title</code></td>
+<td>No, <code>all-products</code>, All products</td>
+<td>store view</td>
+</tr>
+<tr>
+<td>Collect filter insights (1.2); days the counts are kept (<a href="../insights/">Insights</a>)</td>
+<td><code>openfilter/insights/enabled</code>, <code>retention_days</code></td>
+<td>No, 90</td>
+<td>store view; global</td>
+</tr>
+<tr>
+<td>Redirect old filter URLs of another module (1.2); their filter keys</td>
+<td><code>openfilter/migration/redirects</code>, <code>filter_keys</code></td>
+<td>No, <code>shopby</code></td>
 <td>store view</td>
 </tr>
 <tr>

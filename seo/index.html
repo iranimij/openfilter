@@ -82,7 +82,9 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#after-ajax-updates">After AJAX updates</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#not-yet">Not yet</a>
+    <li class="toctree-l2"><a class="reference internal" href="#landing-pages-12">Landing pages (1.2)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#path-urls-12">Path URLs (1.2)</a>
     </li>
     </ul>
                 </li>
@@ -109,6 +111,14 @@
               </ul>
               <ul>
                 <li class="toctree-l1"><a class="reference internal" href="../coexistence/">Other search modules</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../migration/">Moving from another filter module</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../insights/">Insights</a>
                 </li>
               </ul>
               <ul>
@@ -239,7 +249,7 @@
 <ul>
 <li><code>{category}</code> is the category name, <code>{filters}</code> the active values in the order of the page ("Red, Blue"), <code>{store}</code> the store name. Other text in braces stays as it is.</li>
 <li>Pages without filters, and search result pages, keep Magento's title, description and heading.</li>
-<li>Search results show about 60 characters of a title and 160 of a description; keep the templates short. The settings page counts the characters as you type.</li>
+<li>Search results show about 60 characters of a title and 160 of a description; keep the templates short. Under each template the settings page shows a live preview (1.2) with a real category, two option labels and the store name of the default store view, and counts the preview's characters as you type.</li>
 <li>A title template does not change the heading; set the H1 template for that.</li>
 </ul>
 <h2 id="xml-sitemap-11">XML sitemap (1.1)<a class="headerlink" href="#xml-sitemap-11" title="Permanent link">&para;</a></h2>
@@ -253,8 +263,10 @@
 <p>Each URL is the canonical one (<code>/women/tops.html?color=red</code>, the store view's URL names) with the categories' priority, change frequency and last modified date. Counting asks the search engine once per category, so a catalog with thousands of categories takes a little longer to generate.</p>
 <h2 id="after-ajax-updates">After AJAX updates<a class="headerlink" href="#after-ajax-updates" title="Permanent link">&para;</a></h2>
 <p>Filter clicks fetch the same URL a crawler would and copy the title, meta description, robots, canonical and prev/next links from it, and the H1 when a heading template is set, so the page in the browser always carries the head a direct load of that URL has.</p>
-<h2 id="not-yet">Not yet<a class="headerlink" href="#not-yet" title="Permanent link">&para;</a></h2>
-<p>Path-style URLs (<code>/women/tops/red.html</code>) are planned as an option for 1.2.</p>
+<h2 id="landing-pages-12">Landing pages (1.2)<a class="headerlink" href="#landing-pages-12" title="Permanent link">&para;</a></h2>
+<p>A <a href="../storefront/#landing-pages-12">landing page</a> has its own title, meta description, robots value (<em>INDEX,FOLLOW</em> by default) and H1, and its URL is its canonical URL. The category page with the same filters names the landing page as canonical, and filter links that reach the same filters point to it, so search engines find one address per filter state. Landing pages set to <em>INDEX</em> are listed in the XML sitemap (with the categories' priority and change frequency), whether or not the filter page sitemap is on.</p>
+<h2 id="path-urls-12">Path URLs (1.2)<a class="headerlink" href="#path-urls-12" title="Permanent link">&para;</a></h2>
+<p>Category pages can use path filter URLs (<code>/women/tops-women/color-black.html</code>), see <a href="../url-format/#path-urls-12-opt-in">Filter URLs</a>. Robots, nofollow, canonical and sitemap rules are the same; canonical URLs and sitemap entries use the path form, and the other form redirects (301) to it.</p>
               
             </div>
           </div><footer>

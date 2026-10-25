@@ -82,7 +82,7 @@
               <ul class="current">
                 <li class="toctree-l1 current"><a class="reference internal current" href="#">Import and export</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#format-schema-2">Format (schema 2)</a>
+    <li class="toctree-l2"><a class="reference internal" href="#format-schema-3">Format (schema 3)</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#all-or-nothing">All or nothing</a>
     </li>
@@ -97,6 +97,14 @@
               </ul>
               <ul>
                 <li class="toctree-l1"><a class="reference internal" href="../coexistence/">Other search modules</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../migration/">Moving from another filter module</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../insights/">Insights</a>
                 </li>
               </ul>
               <ul>
@@ -142,14 +150,15 @@
 bin/magento openfilter:config:import openfilter.json --dry-run   # lists every change, writes nothing
 bin/magento openfilter:config:import openfilter.json
 </code></pre>
-<h2 id="format-schema-2">Format (schema 2)<a class="headerlink" href="#format-schema-2" title="Permanent link">&para;</a></h2>
+<h2 id="format-schema-3">Format (schema 3)<a class="headerlink" href="#format-schema-3" title="Permanent link">&para;</a></h2>
 <pre><code class="language-json">{
-    &quot;schema&quot;: 2,
+    &quot;schema&quot;: 3,
     &quot;filters&quot;: {
         &quot;color&quot;: {
             &quot;settings&quot;: {&quot;display_mode&quot;: &quot;swatch&quot;, &quot;multiselect&quot;: true, &quot;logic&quot;: &quot;or&quot;, &quot;visible_options&quot;: 6,
                 &quot;search_threshold&quot;: 12, &quot;expanded&quot;: null, &quot;sort_by&quot;: &quot;position&quot;, &quot;hide_single_option&quot;: true,
-                &quot;seo_indexable&quot;: true, &quot;position_override&quot;: null, &quot;active&quot;: true, &quot;ranges&quot;: null, &quot;tree_depth&quot;: 3},
+                &quot;seo_indexable&quot;: true, &quot;position_override&quot;: null, &quot;active&quot;: true, &quot;ranges&quot;: null, &quot;tree_depth&quot;: 3,
+                &quot;depends_on&quot;: null, &quot;depends_values&quot;: [], &quot;quick_bar&quot;: true},
             &quot;labels&quot;: {&quot;de&quot;: &quot;Farbe&quot;},
             &quot;tooltips&quot;: {&quot;admin&quot;: &quot;Pick one or more colours&quot;},
             &quot;url_name&quot;: {&quot;admin&quot;: &quot;color&quot;},
@@ -165,6 +174,7 @@ bin/magento openfilter:config:import openfilter.json
 <li>Options are keyed by their admin label. When an attribute has several options with the same label, they are numbered in option order: <code>"Wool #1"</code>, <code>"Wool #2"</code>.</li>
 <li>Every section and setting is optional: a file may contain only what it changes.</li>
 <li>Schema 2 (OpenFilter 1.1) adds <code>"logic": "and"</code> ("Match all"), <code>ranges</code> (the list of the <em>Ranges</em> display type, for example <code>"0-50,50-100,100-"</code>; <code>null</code> = automatic), <code>tree_depth</code> (levels of the category tree, 1–5), <code>category_mode</code> and <code>category_ids</code> (<strong>Where it shows</strong>: <code>all</code>, <code>only</code> or <code>except</code> the listed category ids; ids are those of the store the file comes from) and the <code>tooltips</code> section. Files with schema 1 from OpenFilter 1.0 import unchanged.</li>
+<li>Schema 3 (OpenFilter 1.2) adds <code>depends_on</code> (the key of the filter this one waits for; <code>null</code> = always shown), <code>depends_values</code> (the values of that filter that show this one: option keys as above for an attribute, the built-in's values otherwise; <code>[]</code> = any pick) and <code>quick_bar</code> (the filter's options appear in the quick filter bar). Files with schema 1 and 2 import unchanged.</li>
 </ul>
 <h2 id="all-or-nothing">All or nothing<a class="headerlink" href="#all-or-nothing" title="Permanent link">&para;</a></h2>
 <p>The import first checks the whole file: schema, known filters, store views and options, value types, URL name format. Then it writes every filter inside one database transaction through the same rules as the admin (display types that fit the attribute, URL names unique per attribute and store view). If any value is refused, nothing is written and the command lists the reason and exits with <code>1</code>.</p>
