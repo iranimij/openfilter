@@ -57,6 +57,11 @@ class ParamNormalizer
             return ['redirect' => $drop !== [], 'state' => $state, 'changed' => false, 'drop' => $drop];
         }
         $canonical = $this->codec->encode($state, $storeId);
+        // The order of the parameters is not a reason to redirect: Magento's Varnish configuration sorts query
+        // parameters alphabetically before the request reaches Magento, so a redirect to the filters' own order would
+        // come back sorted and loop. The canonical tag still names one URL.
+        ksort($actual);
+        ksort($canonical);
 
         return [
             'redirect' => $drop !== [] || $actual !== $canonical,
